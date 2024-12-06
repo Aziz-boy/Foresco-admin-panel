@@ -1,0 +1,131 @@
+/*
+1 Compiled Interpreted tillarni o'rganamiz hamda ularning o'zaro solishtirma tahlili
+2 Typescript nima va uning vujudga kelishi bizga qanday muammolarni hal qilib berdi 
+3 Typescriptda dynamic typing va interfacekar tushunchasi 
+4 Burak back end Loyihamizni Typescriptda quramiz 
+5 Patternlarni o'rganamiz, Architecture and design patternlarga to'xtalamiz
+
+
+//Compiled tillar Java, Golang, C, C++, C# Rust => Compiling yani to'liq mashina qiliga o'giradi & Running
+//Bu tillarda esa aynan qayerda xato boriligi ko;riladi va error qaytarib turadi yani run bo'lmaydi. biz uni xatoligini bilish uchun run qilishimiz shart emas yani u xato bolsa project run bolmaydi
+
+
+//Interpreted tillar: NOdejs, Python, PHP, Ruby => Running yani bu tillar to'g'ridan to'g'ri satrma satr run qiladi yani bularda Compiling yo'q
+//Compile qilinmasdan Run bolishi bu bizga jarayon tezlashtirgani foyda bersada 
+//Compile qilinmagani uchun ham errorlarni bu bizga qachonki unga yuz kelib run qilsa qaytaradi 
+
+
+
+Error Asosan type errorlar haqida gap ketyapti yani typega bog'liq errorlar haqida gapiryapmiz 
+Mana shu ozi asosan Node.js ni eng og'riqli nuqtalaridan edi yani bunda Type integration mavjud emas edi desak ham boladi 
+
+Typescript compiled languagelarga o'xshash static typelarni yani dynamic typelarni nodejs ga olib kirdi va bu bizga katta projectlarda qo'l keladi 
+Typescriot bu nima ?
+Typescript bu Nodejsga type tushunchasini olib kirgan yani dynamic type integrationni hosil qilgan instrument hisoblanar ekan 
+Typescript = Typecriptga tegishli elementlar  + javascript 
+Sourcimizni biz Typescriptga yozamiz va bizning tapescript bniz yozgan typescript kodni js ga to'liq o'tkazar ekan yani Compile qiladi Javascriptga 
+
+Dynamic Interface tushunchasi 
+
+Primitive types refference ga ega bolmagan varibllar
+string 
+number 
+symbol 
+boolean
+null
+undefined
+symbol
+
+Object types
+array
+map
+
+
+*/
+
+
+TYPESCRIPT PLAYGROUND 
+
+
+
+/*
+let box: string;
+box = "hello";
+box = 100;
+yani bu yerda run bolmasdan turib compile error beryapti yani siz stringni numberga tenglolmaysiz deb 
+
+*/
+
+/*
+const counter: number = "hi";
+Bu yerda number deb turib string beropmiz
+
+let stage:number | string = "hello";
+stage = 100;
+tepadagini ham string qilopmiz ham number qilyapmiz xatoliksiz ishlayapti
+
+
+  //objectlarda koramiz
+
+//interface
+//biz bu yerda interface yordamida ozimini objectimizni propertylarini typini define qilyapmiz
+
+interface Person {
+    name:string,
+    age:number,
+    nation:string,
+}
+//interface orqali hosil qilgan typimizni berypamiz
+const person: Person= {
+    name: 'Adam',
+    age: 30,
+    nation: 'Uzbek'
+}
+
+//Arraylar
+let skills: string[];
+skills = ['problemsolving', 'adambek', 'go home', 100];
+
+let smth: (string | number) [];
+smth = ['problemsolving', 'adambek', 'go home', 100];
+
+
+
+class Person {
+    age: number;
+    firstName: string;
+    lastName: string;
+
+    constructor(age: number, firstName: string, lastName: string) {
+        this.age = age;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+}
+
+const person1 = new Person (true, 'Martin', 'Robertson'); 
+// mana bu yerda compile error beryapti yani bu aytmoqchiki siz deyapti number orniga boolean qiymat beryapsiz deyapti.
+
+*/
+
+Har qanday front yoki back end patternlar yordamida quriladi 
+
+Architectural patternlar MVC = model view controller , DI = dependency injection, MVP = model view presenter
+backendning suyagi 
+malumotlar oqimini tartibga soladigan vosita yani arxitetktura 
+odamning ozi yani arxitekturasi vazifasini bajaradi
+DI = dependency injection modullar ishlatish tizimida ishlatilinadi yani nestjsda 
+
+Design patternlar MIddlerware, Decorator 
+butun bir back edn tizimini emas malum strukturani bo'laklarini tuzishga kerak boladi 
+insonning barmo'gi suyagi vazifasini bajaradi
+
+
+Design patternlar Creational | Structural | Behavioral turlariga bo'linadi 
+
+bu langugagelar aro o'xshash tushunchalar
+
+pattern manosi naqsh degani lkn bizn buni suyak deb atasak boladi 
+
+
+

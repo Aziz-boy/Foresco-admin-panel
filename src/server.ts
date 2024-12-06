@@ -11,3 +11,4 @@ const person: string = "Adam";
 const count: number = 100;
  
 //npm run build orqali biz dist folderga ozimizni typescriptni jsga o'girilib beriladi 
+

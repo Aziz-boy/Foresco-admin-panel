@@ -5,10 +5,12 @@
   "main": "server.ts",
   "scripts": {
     "start": "ts-node src/server.ts",
-    "start:dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
+    "start:dev": "nodemon --exec ts-node src/server.ts",
     "build": "tsc",
     "dev": "npm run start:dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "train": "nodemon train.js"
+    
   },
   "author": "ADAM",
   "license": "ISC",
@@ -16,7 +18,6 @@
     "moment": "^2.30.1"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
     "nodemon": "^3.1.7",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
