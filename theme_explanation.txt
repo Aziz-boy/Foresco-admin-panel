@@ -129,3 +129,11 @@ pattern manosi naqsh degani lkn bizn buni suyak deb atasak boladi
 
 
 
+//CLUSTER => DATABASE => COLLECTION => DOCUMENT
+//MONGODB noSQL DOCUMENT BASED database
+
+Mongoose bu mongodb bnilan ishlash uchun hosil qilingan package hisoblanadi
+
+REJA loyihada mongodbni to'g'ridan to'g'ri ishlatilindi
+BURAK loyihasida biz mongodbni mongoose package bilan ishlaymiz SQL singari tablega oxshagan datalarni schema orqali hosil qilamiz 
+mongoosejs.com 
