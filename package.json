@@ -9,7 +9,7 @@
     "build": "tsc",
     "dev": "npm run start:dev",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "train": "nodemon train.js"
+    "train": "nodemon --exec ts-node src/train.ts"
   },
   "author": "ADAM",
   "license": "ISC",

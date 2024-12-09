@@ -4,5 +4,9 @@ console.log("Server is running...");
 import dotenv from 'dotenv';
 dotenv.config();
 
-//npm run build orqali biz dist folderga ozimizni typescriptni jsga o'girilib beriladi 
+
+//CLUSTER => DATABASE => COLLECTION => DOCUMENT
+//MONGODB noSQL DOCUMENT BASED database
+
+
 
