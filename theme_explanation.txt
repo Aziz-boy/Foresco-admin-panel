@@ -108,7 +108,7 @@ const person1 = new Person (true, 'Martin', 'Robertson');
 
 */
 
-Har qanday front yoki back end patternlar yordamida quriladi 
+Har qanday front yoki back end patternlar yordamida quriladi  
 
 Architectural patternlar MVC = model view controller , DI = dependency injection, MVP = model view presenter
 backendning suyagi 

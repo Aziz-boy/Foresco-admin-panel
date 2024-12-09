@@ -10,11 +10,11 @@
     "dev": "npm run start:dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "train": "nodemon train.js"
-    
   },
   "author": "ADAM",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "moment": "^2.30.1"
   },
   "devDependencies": {

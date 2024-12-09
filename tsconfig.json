@@ -8,12 +8,12 @@
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
       "baseUrl": "./",
-      "paths": {
-          "*": ["node_modeules/*"]
-      }
+      "paths": { }
   },
   "include": ["src/**?*.ts"],
   "exclude": ["node_modules"]
 }
+
+
 
 //bu uyerda biz aynan typescript kodlarini qanday qilib jsga compile qilishning configuratsiyasini kitishimiz kerak c kodlarini 
