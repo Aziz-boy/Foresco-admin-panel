@@ -1,6 +1,6 @@
 console.log('Train.js is running...');
 
-
+//TASK SRC PAPKASINI ICHIDAGI train.ts da Bekzod aka  shu yerga yozishimiz kerak ekanligini videoda aytdilar
 
 
 
