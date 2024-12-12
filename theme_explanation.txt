@@ -263,3 +263,10 @@ agar default qilmasangiz u yerdan yana boshqa qiymatlarni qaytarishingiz mumkin
 yani faykdan birgina qiyamtni yaxlit qaytrish uchun dfault ishltilinadi 
 
 4 Restaurant Controllerni xosil qilamiz 
+
+
+/*** 4- ROUTERS ***/
+app.use('/', router); 
+Burak back end loyihani ikki maqsadda ishlatyapmiz
+1- SPA: REACT uchun restapi server sifatida ishlatamiz 
+2- BSSR: EJS, Burak adminkasini qurish uchun.
