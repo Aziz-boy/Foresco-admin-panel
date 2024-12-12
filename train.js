@@ -3,6 +3,7 @@ console.log('Train.js is running...');
 //TASK SRC PAPKASINI ICHIDAGI train.ts da Bekzod aka  shu yerga yozishimiz kerak ekanligini videoda aytdilar
 
 
+/*  
 function largest(n, array) {
   let sorted_array = array.sort((a, b) => a - b).reverse();
   let final_array =[]
@@ -14,7 +15,7 @@ function largest(n, array) {
 
 console.log(largest(2, [7,6,5,4,3,2,1,10,11]))
 
-/*  
+
 
 function hello(name = "") {
   if (name !== "") {
