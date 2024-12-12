@@ -270,3 +270,21 @@ app.use('/', router);
 Burak back end loyihani ikki maqsadda ishlatyapmiz
 1- SPA: REACT uchun restapi server sifatida ishlatamiz 
 2- BSSR: EJS, Burak adminkasini qurish uchun.
+
+Member Schema Modellar 
+1 Member Service Model xaqida gaplashamiz
+
+2 Mongoose documentationga borib unda 
+  Schema Model va Quary tushunchalarini o'rganamiz
+      schema model
+  Mongooseda markaziy tushuncha bu Schemadir
+  Biz hosil qilgan schema orqali modelni quramiz shunign uchun ham member schema model
+  Databse bilan bog'liq har qanday ishlarni schema model orqali bajaramiz.
+    
+       Query
+   Schema modellar orqali choqiriladigan komndalar query deyiladi. 
+   Query ni qayta qayta chain holatda ishlatib ketishimiz mumkin.
+   masalan nimadir method nuqta qoyib yana shart qoyish mumkin
+
+
+3 Member Schema Modelni birgalikda hosil qilamiz
