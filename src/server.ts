@@ -1,6 +1,6 @@
  //Ecmajs ni ishlatyapmiz
 console.log("Server is running...");
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'; 
 dotenv.config();
 import mongoose from 'mongoose';
 import app from "./app";

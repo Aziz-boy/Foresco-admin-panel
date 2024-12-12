@@ -3,7 +3,119 @@ console.log('Train.js is running...');
 //TASK SRC PAPKASINI ICHIDAGI train.ts da Bekzod aka  shu yerga yozishimiz kerak ekanligini videoda aytdilar
 
 
+function largest(n, array) {
+  let sorted_array = array.sort((a, b) => a - b).reverse();
+  let final_array =[]
+  console.log(sorted_array)
+  final_array=final_array.concat(sorted_array.slice(0,n).reverse());
+  return (final_array)
 
+}
+
+console.log(largest(2, [7,6,5,4,3,2,1,10,11]))
+
+/*  
+
+function hello(name = "") {
+  if (name !== "") {
+    const capitalized_name = name[0].toUpperCase() + name.slice(1, name.length).toLowerCase();
+    return `Hello, ${capitalized_name}`;
+  } else {
+    return "Hello, Luboy kishi"; 
+  }
+}
+
+console.log(hello())
+
+
+
+ 
+
+function findOdd(numbers) {
+
+  // 1step bir xil sonlani ajratish 
+  let uniqueNumbers = Array.from(new Set(numbers));
+  console.log(uniqueNumbers);
+  console.log(numbers)
+
+  
+  for (let i = 0; i < uniqueNumbers.length; i++) {
+      
+      function isEqual(num) {
+          return num === uniqueNumbers[i];
+      }
+
+      let count = numbers.filter( (num) => { num === uniqueNumbers[i] } ).length;
+      console.log(count ,"true qaytaropti");
+
+      
+      if (count % 2 !== 0) {
+          return uniqueNumbers[i];
+      }
+  }
+
+}
+
+
+console.log(findOdd([1,2,2,3,3,3,4,3,3,3,2,2,1]))
+
+function findOdd(numbers) {
+   let currentGroup= [numbers[0]]
+   for (i=0; i>numbers.length; i++) {
+       if(numbers[i]===0||numbers[i]==[numbers[i-1]]) {
+         currentGroup.push(numbers[i])
+
+       }
+
+   }
+   console.log(currentGroup)
+  
+
+  
+
+}
+
+console.log(findOdd([1,2,2,3,3,3,4,3,3,3,2,2,1]))
+
+
+function friend(friends){
+    filter()
+}
+
+let result = friend(["Ryan", "Kieran", "Jason", "Yous"])
+
+console.log(result)
+
+function friend(friends){
+    let myfriends = []
+    for (let i=0; i < friends.length; i++) {
+      if(friends[i].length == 4) {
+        myfriends.push(friends[i])
+      }else continue
+
+    }
+      return myfriends
+}
+
+let result = friend(["Ryan", "Kieran", "Jason", "Yous"])
+
+console.log(result)
+
+
+
+function getPositive (int_arr:number[]) {
+  let positive_arr :number []=[]
+ for (let i=0; i < int_arr.length; i++) {
+   if (int_arr[i]>0) {
+      positive_arr.push(int_arr[i])
+   } else continue
+ }
+ return positive_arr.join("")
+}
+
+let result = getPositive([1, -4, 2,]);
+console.log(result);
+/*
 
 
 

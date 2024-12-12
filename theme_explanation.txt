@@ -110,15 +110,20 @@ const person1 = new Person (true, 'Martin', 'Robertson');
 
 Har qanday front yoki back end patternlar yordamida quriladi  
 
-Architectural patternlar MVC = model view controller , DI = dependency injection, MVP = model view presenter
+Architectural patternlar 
+MVC = 
+model view controller, 
+MVP = model view presenter
+
 backendning suyagi 
 malumotlar oqimini tartibga soladigan vosita yani arxitetktura 
 odamning ozi yani arxitekturasi vazifasini bajaradi
 DI = dependency injection modullar ishlatish tizimida ishlatilinadi yani nestjsda 
 
-Design patternlar MIddlerware, Decorator 
+Design patternlar MIddlerware, Decorator , MVVC
 butun bir back edn tizimini emas malum strukturani bo'laklarini tuzishga kerak boladi 
 insonning barmo'gi suyagi vazifasini bajaradi
+DI = dependency injection,
 
 
 Design patternlar Creational | Structural | Behavioral turlariga bo'linadi 
@@ -128,12 +133,133 @@ bu langugagelar aro o'xshash tushunchalar
 pattern manosi naqsh degani lkn bizn buni suyak deb atasak boladi 
 
 
+// ARCHITECTURE PATTERNS:
+//   ◦ MVC => Burak(backend) + Nestar(backend)  = Model View Controller => Controller > Model > Controller
+//   ◦ DI (Dependancy Injection) => Nestar
+//   ◦ REDUX => Burak-Front (REACT)
+//   ◦ MVP => Model View Presentor
 
-//CLUSTER => DATABASE => COLLECTION => DOCUMENT
+
+//   DESIGN PATTERNS:
+//   ◦ Decorators pattern => Nestar
+//   ◦ MiddleWare pattern => Burak + Nestar
+//   ◦ MVVM
+
+
+
+
+
+
+
+
+
+//CLUSTER => DATABASE => COLLECTION => DOCUMENT :Table =>  Dataset
+
 //MONGODB noSQL DOCUMENT BASED database
 
-Mongoose bu mongodb bnilan ishlash uchun hosil qilingan package hisoblanadi
+
+MongoDB is a NoSQL database 
+xususiyatlari :
+
+Schema yani: 
+oldindan tashkillashtirilgan sxemasi bo'lmaydi yani fayllaring bu tartibda bo'ladi
+yoki bu shaklda bo'ladi degan xuddi SQLga oxshab table holatda boladi degan structurasi bolmaydi 
+
+Data Formats yani: 
+Turli xil malumot turlarini o'z ichiga olib biladi {dokument, graph, ustun, key-value, }
+Masalan 
+
+Real-Life Example: E-commerce Website
+miso uchun Amazonga o'xshagn online magazin. 
+har bir mahsulotni turli xil xususiyatlari boladi , 
+misol uchun razmer, rang, narx, and sotuvda mavjudligi .  
+SQLda Bularni barchasi bitta document sifatida turadi json farmatda.
+
+{
+  "product_id": "123",
+  "nomi": "T-shirt",
+  "razmer": ["S", "M", "L"],
+  "rang": "Blue",
+  "narx": 19.99,
+  "sotuvda_mavjudligi": true
+}
+
+SQL databselarda bu narsa alohida table talab qiladi yani oldindan siz qatiy bir nechta jadvallariz bolishi kerak 
+misol uchun mahsulotlar uchun alohida jadval, mahsulot attributlari uchun alohida jadval qilish talab qiladi 
+bu uje noqulaylik bildiardi. yana ustiga agar biz yangi attribut qoshishimiz kerak bolsa yani qoshimcha column 
+jadvalga databasaga borib ozgartirish kiritish kabi kop ish oladi.
+
+             ***Product Table***
+| ProductID | Nomi       | Narxi  | sotuvda_mavjudligi | location |
+|-----------|------------|--------|--------------------|          |
+| 123       | T-shirt    | 19.99  | true               |           
+| 124       | Laptop     | 999.99 | false              |
+             ***Attribute Table***
+
+| AttributeID | ProductID | AttributeNomi | AttributeQiymati |
+|-------------|-----------|---------------|------------------|
+| 1           | 123       | Size          | S                |
+| 2           | 123       | Size          | M                |
+| 3           | 123       | Color         | Blue             |
+| 4           | 124       | Processor     | i5               |
+| 5           | 124       | RAM           | 16GB             |
+
+
+nimaga asosan ishlatilinadi ?
+handling large-scale data. katta maydon qancha ishlatsangi bemalol 
+unstructured data. aniq struktura bolmaydi 
+
+
+
+
+Mongoose is Sqllashtirilgan database 
+Schema bu Mongooseda bu shunaqangi bir struktura unda biz ozimizni documentimizni shaklini tasniflaymiz collectionni ichida. 
+Consistency aniqlik boladi 
+
+
+Mongoose bu mongodb bilan ishlash uchun hosil qilingan package hisoblanadi
 
 REJA loyihada mongodbni to'g'ridan to'g'ri ishlatilindi
 BURAK loyihasida biz mongodbni mongoose package bilan ishlaymiz SQL singari tablega oxshagan datalarni schema orqali hosil qilamiz 
 mongoosejs.com 
+
+mongoose bizga suniy tablelarni yaratib beradi va schema validation xatoligini beradi 
+
+no sql ni - tomoni qolipsiz plansiz yani luboy narsani yozib ketadi 
+
+
+Router va controllerlar 
+1 Routerlarni o'rganamiz 
+//router instansidan foydalanib biz get post methodlarini amalga oshirishimiz mumkin 
+app.use('/', router); / slashdan kelayotgan zaproslarni router.ts faylga yuborishini sorayapmiz
+app.use('/', router); nimaga bu use() Middleware design patternligini sababi 
+                       mana shu / dan kelayotgan malumotlarni bizni router.ts faylimizga yo'naltiryapti 
+                       va buning vazifai faqat shu yerga amalga oshadi 
+
+2 MVC architecture patterni o'rganamiz 
+    Design patternlar butun bir tizmini suyagini qura olmaydi 
+    lekin architecture patternlar butun bir tizimni suyagini qura beradi
+
+    Model View Controller => Controller > Model > Controller
+    bir nech cloudlar yani browserlar request yuboradi va birinchi navbatda bu router turadi va routerdan keyn MVC turadi 
+    Controllerlar markaziy rolni bajaradi. Routerimiz turli xil requestlarni qabul qiladi va controllerga yuboradi. 
+    controller esa boshqaruvchi yani bizga kelgan requestni taqdiri bilan shug'ullanadi control qilib turadi
+     shuning uchun ham unga juda katta manqtiq yozilmaydi chunki asosiy vazifasi boshqaruv. 
+     controllerlar modellarga rquest yubroadi yani mana buni qil deb buyuradi va 
+     modellar esa o'z navbatida business logic ham deyiladi yani asosiy mantiqimiz  modellarda yoziladi.
+
+     MODEL ozi 2 ga bo'linadi  
+
+     Servis model => tog'ridan to'g;ri controllerlar bilan ishlaydi yani controller uchun xizmat qiladi.
+     Schema model => database bilan birgalikda ishlash uchun yordamga keladigan modellar hisoblanadi. 
+     Schema orqali databasedan malumot CRUD qilamiz va uning natijasini esa Servis ga beramiz 
+     va u Controllerga yuboradi. Servis modeldan olgan datani controllerimiz viewga malumotni beradi 
+     View esa bizning HTMl ni backenda qurib oladi. va view bizga tayyor HTML falyni bizning contorllerga qaytarib beradi 
+     Controller esa bu olgan faylni routerlar orqali bizning browserga yuboradi.
+
+3 Member controllerlarini xosil qilamiz
+export default ishlatsangiz o'sha faylni umumiy qaytarayotgan qiymatini olishingiz mumkin boladi 
+agar default qilmasangiz u yerdan yana boshqa qiymatlarni qaytarishingiz mumkin
+yani faykdan birgina qiyamtni yaxlit qaytrish uchun dfault ishltilinadi 
+
+4 Restaurant Controllerni xosil qilamiz 

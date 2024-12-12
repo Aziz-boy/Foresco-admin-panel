@@ -1,5 +1,16 @@
 console.log("Train.ts is running......")
 
+
+
+
+
+
+
+
+
+
+
+
 /*
 H-TASK: 
 
@@ -7,20 +18,18 @@ shunday function tuzing, u integerlardan iborat arrayni argument sifatida
 qabul qilib, faqat positive qiymatlarni olib string holatda return qilsin
 MASALAN: getPositive([1, -4, 2]) return qiladi "12"
 
-*/
-
 
 function getPositive (int_arr:number[]) {
-    let positive_arr :number []=[]
-   for (let i=0; i < int_arr.length; i++) {
-     if (int_arr[i]>0) {
-        positive_arr.push(int_arr[i])
-     } else continue
-   }
-   return positive_arr.join("")
+const positive_array = int_arr.filter(isPositive);
+ function isPositive(num:number):boolean {
+     return num>0
+  }
+
+  return positive_array
+
 }
 
-let result = getPositive([1, -4, 2,]);
+const result = getPositive([1, -4, 2]);
 console.log(result);
 
 
@@ -29,11 +38,82 @@ console.log(result);
 
 
 
+function getPositive (int_arr:number[]) {
+  let positive_arr :number []=[]
+ for (let i=0; i < int_arr.length; i++) {
+   if (int_arr[i]>0) {
+      positive_arr.push(int_arr[i])
+   } else continue
+ }
+ return positive_arr.join("")
+}
 
+let result = getPositive([1, -4, 2,]);
+console.log(result);
 
+*/
 
 
 /*
+
+class BankAccount {
+  //# private 
+  //_ protected
+  //  public
+  private balance: number;
+
+  constructor(initialBalance: number) {
+    this.balance = initialBalance;
+  }
+
+  // Public method to access and modify the balance
+  deposit(amount: number): void {
+    if (amount <= 0) {
+      console.log("Deposit amount must be greater than 0.");
+      return;
+    }
+    this.balance += amount;
+    console.log(`Deposited: ${amount}. Current Balance: ${this.getBalance()}`);
+  }
+
+  withdraw(amount: number): void {
+    if (amount > this.balance) {
+      console.log("Insufficient funds.");
+      return;
+    }
+    this.balance -= amount;
+    console.log(`Withdrew: ${amount}. Current Balance: ${this.getBalance()}`);
+  }
+
+  // Protected method to get the balance (read-only for external classes)
+  getBalance(): number {
+    return this.balance;
+  }
+}
+
+// Usage
+const account = new BankAccount(100);
+account.deposit(50);  // Deposited: 50. Current Balance: 150
+account.withdraw(30); // Withdrew: 30. Current Balance: 120
+// account.balance = 1000; // Error: Cannot access private property
+
+
+
+
+
+let int_arr:(number | string | boolean )[] = [4,2,3,4]
+console.log(int_arr)
+int_arr.push("Azizbek", true)
+console.log(int_arr)
+
+
+
+
+
+
+
+
+
 TASK G:
 
 Yagona parametrga ega function tuzing.
