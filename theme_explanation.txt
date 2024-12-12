@@ -288,3 +288,5 @@ Member Schema Modellar
 
 
 3 Member Schema Modelni birgalikda hosil qilamiz
+  enum qiymatlar aniq belgilangan qiymatlarnigina 
+  qabul qilish maqsadida ishlatilnadigan type hisoblanadi
