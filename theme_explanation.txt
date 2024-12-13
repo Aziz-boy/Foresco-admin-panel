@@ -290,3 +290,28 @@ Member Schema Modellar
 3 Member Schema Modelni birgalikda hosil qilamiz
   enum qiymatlar aniq belgilangan qiymatlarnigina 
   qabul qilish maqsadida ishlatilnadigan type hisoblanadi
+
+
+  Loyiha standartlarini joriy qilamiz
+
+  Bizda Login qilish mexanizmi
+  Error handle qilish mexanizmi misol uchun Restaurantcontrollerda har birida console.log(gohome..) qilindi
+  o'zimiz hosil qilgan errorlarni handleqilish mexanizmlar to'plami try/catch usage
+  serverga kelayotgan turli xil requestlarni tarkibini serverga chiqarish tushuniladi
+  Morgan Loyihamizga bo'layotgan requestlarni turlarini ko'rish uchun kerak
+
+  Project Standards
+  - Logging Standards
+  - Naming Standards
+     function, method, varible => Camel Case 
+     class => PASCAL
+     folder => Kebab-Case
+     CSS => Snake_Case
+  - Error handling    
+  
+  Nimga Asynchronous try catch ishlatyapmiz ?
+
+  try maydonida biz ozimizni logikamizni yozamiz va uni ichida error chiqsa uni catch tutib olib chiqaradi consolega
+  
+
+  API request methodlari haqida gaplashamiz hamda postmanni quramiz

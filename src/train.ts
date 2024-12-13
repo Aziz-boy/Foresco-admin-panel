@@ -1,11 +1,35 @@
 console.log("Train.ts is running......")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*H2-TASK: 
 
 Shunday function tuzing, unga string argument pass bolsin. Function ushbu agrumentdagi digitlarni yangi stringda return qilsin
 MASALAN: getDigits("m14i1t") return qiladi "141" 
-*/
+
 
 // Step-by-step approach to extract digits from a string
 function getDigits(inputString: string): string {
@@ -24,7 +48,7 @@ function getDigits(inputString: string): string {
 console.log(getDigits("m14i1t")); 
 
 
-
+*/
 
 
 
