@@ -1,8 +1,14 @@
 console.log("Train.ts is running......")
-
-
-
-
+/*
+Project Standards
+  - Logging Standards
+  - Naming Standards
+     function, method, varible => Camel Case 
+     class => PASCAL
+     folder, file => Kebab-Case
+     CSS => Snake_Case
+  - Error handling    
+  /*
 
 
 

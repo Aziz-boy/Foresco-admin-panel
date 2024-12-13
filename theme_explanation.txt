@@ -305,7 +305,7 @@ Member Schema Modellar
   - Naming Standards
      function, method, varible => Camel Case 
      class => PASCAL
-     folder => Kebab-Case
+     folder, file => Kebab-Case
      CSS => Snake_Case
   - Error handling    
   
