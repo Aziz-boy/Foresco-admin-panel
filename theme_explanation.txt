@@ -313,5 +313,21 @@ Member Schema Modellar
 
   try maydonida biz ozimizni logikamizni yozamiz va uni ichida error chiqsa uni catch tutib olib chiqaradi consolega
   
+  Browser faqat Get bilan ishlay oladi 
+  Postni biz browserdan olomaganimiz uchun postmanga murojaat qildik 
+  Post methodni qanday serverga 
+  Get qandaydir malumotlarni render qilib qandaydir malumotni olish uchun ishlatilinsa
+  Post mehodi asosan harakatlarni amalga oshirish vaqtida. o'zgatirish uchun mutation uchun 
+  get  postda ishlash bu minimalistik podxod
+  postman tool orqali browserdan ololmagan har qanday turdagi methodlarimizni olishimiz mumkin
+  Response berilmasa: controllerimizni methodidan response ololmasa API qotib qoladi  
+  response turlari :
+       send | json | redirect | end | render 
+  
+  postni browserdan olomaganimiz uchun postmanga murojaat qildik. 
+  app.js dagi admindan otadi routeradminga boradi post methodini izlaydi chunki biz post requestini 
+  yuboryapmiz URL ni solishtiradi hammasi maqul bolsa process loginni yuboradi hamda process loginda 
+  javob kelishi kerak javobni esa response send bilan yuboramiz
+ 
 
   API request methodlari haqida gaplashamiz hamda postmanni quramiz
