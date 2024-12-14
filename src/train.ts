@@ -10,8 +10,47 @@ Project Standards
   - Error handling    
   /*
 
+  /*
+-Adminka signup jarayonini amalga oshiramiz 
+-Application Proggraming Interface 
+
+  Traditional Api odatda API ham deyiladi 
+  Rest Api
+  GraphQL Api
+  ...
+
+  Post methodlarni body qismi mavjud bo'ladi 
+  requestni header qismi boladi body qismi boladi body qismi faqat post APIlarda mavjud boladi 
+  
+
+       TASK I:
+
+Shunday function tuzing, u parametrdagi array ichida eng ko'p
+takrorlangan raqamni topib qaytarsin.
+
+MASALAN: majorityElement([1, 2, 3, 4, 5, 4, 3, 4]); return 4
+
+Yuqoridag misolda argument sifatida kiritilayotgan array tarkibida 4 soni ko'p takrorlanganligi uchun 4'ni return qilmoqda.
+  */
 
 
+  function majorityElement(arr: number[]): number | null {
+    const count: Record<number, number> = {}; 
+    let maxCount = 0; 
+    let majority: number | null = null; 
+
+    for (const num of arr) {
+        count[num] = (count[num] || 0) + 1; 
+        if (count[num] > maxCount) {
+            maxCount = count[num];
+            majority = num;
+        }
+    }
+
+    return majority;
+}
+
+console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]));
 
 
 

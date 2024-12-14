@@ -13,7 +13,7 @@ routerAdmin
     .post('/login', restaurantController.processLogin);
 routerAdmin
     .get('/signup', restaurantController.getSignup)
-    .post("./signup", restaurantController.getSignup);
+    .post("/signup", restaurantController.processSignup);
 
 
 
@@ -21,6 +21,6 @@ routerAdmin
 
 /*** User ***/   
 
-export default routerAdmin;
+export default routerAdmin; 
 
 //router bu yo'nalish ko'rsatuvchi

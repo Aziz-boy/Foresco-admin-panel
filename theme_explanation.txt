@@ -331,3 +331,10 @@ Member Schema Modellar
  
 
   API request methodlari haqida gaplashamiz hamda postmanni quramiz
+
+  -Adminka signup jarayonini amalga oshiramiz 
+Application Proggraming Interface 
+
+// Promise<void>promise orqali bu methodimiz hech nimani qaytarmasligini yozyapmiz  
+//qachonki bizning methodimiz asynchronous method bolmasa promise ishlatmaysiz promise faqat async methodda ishlatilinadi 
+// asynchoronous methodlar bilan ishlaymiz chunki biz doim databse bilan ishlaymiz yani databasedan malumot olamiz 
