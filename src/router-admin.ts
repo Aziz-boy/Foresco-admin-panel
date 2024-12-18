@@ -13,7 +13,7 @@ routerAdmin
     .post('/login', restaurantController.processLogin);
 routerAdmin
     .get('/signup', restaurantController.getSignup)
-    .post("/signup", restaurantController.processSignup);
+    .post("/signup", restaurantController.processSignup);// Traditional Api miz 
 
 
 

@@ -328,13 +328,48 @@ Member Schema Modellar
   app.js dagi admindan otadi routeradminga boradi post methodini izlaydi chunki biz post requestini 
   yuboryapmiz URL ni solishtiradi hammasi maqul bolsa process loginni yuboradi hamda process loginda 
   javob kelishi kerak javobni esa response send bilan yuboramiz
- 
+  biz loyihada minimalistik padxoddan foydalanyapmiz query hamda mutation holatiga moslashtiramiz 
+  Get Methodi agar qandaydir datalarni back enddan olayotgan bolsak biz getni ishlatamiz 
+  qolgan barcha holatlarda post ishlatamiz put patch delete ni orniga
+
+  bizda bitta Urlimiz ham get hamda post vazifasini bajarishi mumkin 
 
   API request methodlari haqida gaplashamiz hamda postmanni quramiz
 
   -Adminka signup jarayonini amalga oshiramiz 
+
+
+
+
+
 Application Proggraming Interface 
+
+1
+Traditional API
+Rest API
+GraphQL API
+
+2
+Header/ Body
+
+3
+Get / Post
+
+
+REQUESTNi 
+
+body hamda Header qismi bor 
+body qismi faqat post methodlarda bor 
+
+Http bir marta request 
+Ctp doimiy bog'lanish
+
 
 // Promise<void>promise orqali bu methodimiz hech nimani qaytarmasligini yozyapmiz  
 //qachonki bizning methodimiz asynchronous method bolmasa promise ishlatmaysiz promise faqat async methodda ishlatilinadi 
 // asynchoronous methodlar bilan ishlaymiz chunki biz doim databse bilan ishlaymiz yani databasedan malumot olamiz 
+
+
+
+Json format data bilan objectni farqi qo'shtirnoqlarda
+Objectlarni key qismini string qilsak Json format boladi. 
