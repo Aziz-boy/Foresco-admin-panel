@@ -373,3 +373,80 @@ Ctp doimiy bog'lanish
 
 Json format data bilan objectni farqi qo'shtirnoqlarda
 Objectlarni key qismini string qilsak Json format boladi. 
+
+
+Authentication -
+Authoriation - 
+                                  Web server va undagi Authentication jarayoni
+
+
+   1 VPS va VPC o'zi nima  ?
+
+Virtual private server  
+Digital ocean 
+Hostinger
+ozimizni displayi yo'q computerimizga o'xshaydi 
+bitta yacheyjani tanlagandan keyn sacling qilolmaysiz yani kattaroq project uchun boshqa server tanlashizga togri keladi 
+
+
+Virtual private cloud
+bir nechta machinelarni ustida qurilgan environment hisoblanadi 
+bu esa fizichiskiy chegaralanmagan xohalgancha kengaytirib borasz
+
+   2 Serverlarning o'zaro bog'lanish bo'yicha turlari 
+
+Nodejs ni o'ziga xos xususiyati shundaki uni togridan togri web server korinishida 
+run qilish imkoniyatini beradi qaysiki phpda qilib bo'lmaydi. yani o'zini mustaqil web server sifatida run bo'la olmaydi.
+va bularga Apachi hamda Nginx yordamga keladi. 
+
+Client server
+Markaziy server tushunchasi mavjud boladi  yani express orqali qurgan web serverimiz markazda joylashadi. 
+Web serverlarimiz nodejs da yozilgan serverdan tashqari client server ham hisoblanadi. 
+
+Peer to Peer
+Blokchain texnalogiyasiga xos hisoblanadi, bu yerda har bir mashina bir node hisoblandai
+va bir biriga uzviy bog'langan hisoblanadi yani bir joyda saqlanmaydi ular zanjir ravishda 
+bog'langan boladi. Malumotlar bazasi bir joyda bo'lmaydi yani markaziy server tushunchasi mavjud emas
+
+Hackerlar hacking qilsa node dagi malumotni o'zgartirsa qolgan nodelarimiz uni ozi holiga qaytarib qo'yadi
+bizning serverlarimizni shakli client server yani web server hisoblanadi.
+   3 Authentication nima va uni tashkillashtirish usullari 
+
+Authentication bu nima ?
+aynan web serverga kim murojaat qilayotganini server aniqlash jarayoni Authentication deyiladi
+Authentication processini usullari
+1.Sessions (Cookies) methodimizni ozi sessionlar orqali ishlatilinish mexanizmi cookielarni ichida
+2.Tokens (Cookies) Tokenslarni cookielarni ichida saqlash orqali Authenticationni amlag oshiramiz 
+JWT json web token orqali token hosilm qilishda yordamga keladi 
+3.Tokens (Headers) Tokenlarni cookielarda saqlamay har bitta kelajakdagi requestlarni Headerlar orqali yuborishni strategiya qilgan uslubimiz hisoblanadi.
+
+   4 Session Authentication qanday ishlashini nazariy tahlil qilamiz  
+shunday membernick va memberpasswordga ega bolgan user topilsa databsedan aytaylik
+john degan user mavjud ekan mana shu bosqichda maxsus packagelar orqali 
+hosil bo'lgan userimizni malumotlariga session ID ni biriktiramiz va bu session ID 
+avtomatik ravishda bizning browserimizga borib bizning browserimizni cookie qismida save boladi buni biz 
+maxsus packagelar orqali va ozimini mantiqlarimiz orqali amalga oshiramiz yani manashu login bolgan user uchun maxsus 
+session id biriktiriladi va bu session id borib browserimizni cookie qismiga joylashib oladi. 
+aynan mana shu jarayondan keyn bizni browserimizida cookiemizni xotirasida aynan login bolgan userni session 
+idsi hosil boladi va bu bizning Authentication processimizni poydevori hisoblanadi
+yani bizning browserdan navbatdagi qilinayotgan requestlar ichida cookie ham joylashib oladi 
+cookieni shunday tabiati bor  u borib har qanday requestga  ozini boglab qoyadi yani request bilan 
+har bitta request bilan birga yetib keladi va bizning serverimiz aynan mana shu cookieni ichidagi session idni 
+oqib session id ga tegishli bolgan demak malumotni bizga taqdim etadi va bining serverga kim murojaat qilayotganligini 
+aniq bilib oladi.
+
+nega cookielarni ishlatishimizni asosiy sababi cookielarni kuchli himoyaga ega ekanligidadir, 
+
+   5 browserlarning xotiralarini o'rganamiz                              
+
+   browserni 3 xil xotirasi bor 
+
+   local storage 
+   session storage
+   cookie storage 
+
+Browserni storageini application bolimidan tekshirishimiz mumkin 
+cookielar maxsus himoya vositasidan tashqari cookielar requestga joylashib olish xususiyatiga ega 
+choqirilgan va choqirilmagan joyga ham boradigan bir surbet texnalogiya sifatida qarash mumkin 
+communikatsiya qilish xususiyatiga ham ega yani malum vaqtni korsatamiz ozini ozi yo'q qilib yuboradi va
+bizga foydali muhitni yaratib beradi.    
