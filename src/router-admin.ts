@@ -8,9 +8,10 @@ import restaurantController from "./controllers/restaurant.controller";
 /*** Restaurant ***/
 
 routerAdmin.get('/', restaurantController.goHome);
+
 routerAdmin
     .get('/login', restaurantController.getLogin)
-    .post('/login', restaurantController.processLogin);
+    .post('/login', restaurantController.processLogin); //Rest Api
 routerAdmin
     .get('/signup', restaurantController.getSignup)
     .post("/signup", restaurantController.processSignup);// Traditional Api miz 
