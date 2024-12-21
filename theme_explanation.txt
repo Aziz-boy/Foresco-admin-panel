@@ -450,3 +450,7 @@ cookielar maxsus himoya vositasidan tashqari cookielar requestga joylashib olish
 choqirilgan va choqirilmagan joyga ham boradigan bir surbet texnalogiya sifatida qarash mumkin 
 communikatsiya qilish xususiyatiga ham ega yani malum vaqtni korsatamiz ozini ozi yo'q qilib yuboradi va
 bizga foydali muhitni yaratib beradi.    
+
+
+                              EJS adminka quramiz 
+BSSR ni qurayotganda biz render methodidan faol foydalanamiz yani responsening render methodi mavjud 
