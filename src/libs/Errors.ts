@@ -19,6 +19,7 @@ UPDATE_FAILED = "Update is failed !",
 USED_NICK_PHONE = "You are inserting already used Nick or Phone !",
 NO_MEMBER_NICK = "No member with that member NickName !",
 WRONG_PASSWORD = "Wrong password, please try again !",
+NOT_AUTHENTICATED = "You are not Authenticated, Please login first"
 }
 
 class Errors extends Error {
