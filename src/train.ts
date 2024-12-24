@@ -21,4 +21,10 @@ Project Standards
   Post methodlarni body qismi mavjud bo'ladi 
   requestni header qismi boladi body qismi boladi body qismi faqat post APIlarda mavjud boladi 
   
+
+
+  /*
+  Cookieni xislatlari
+  Request join 
+  Self destroy
   */

@@ -15,7 +15,7 @@ routerAdmin
 routerAdmin
     .get('/signup', restaurantController.getSignup)
     .post("/signup", restaurantController.processSignup);// Traditional Api miz 
-
+routerAdmin.get('/logout', restaurantController.logout)
 routerAdmin.get('/check-me', restaurantController.checkAuthSession)    
 
 
