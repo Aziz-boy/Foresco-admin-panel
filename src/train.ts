@@ -27,4 +27,5 @@ Project Standards
   Cookieni xislatlari
   Request join 
   Self destroy
+  himoyalangan mutahham kamikadze 
   */

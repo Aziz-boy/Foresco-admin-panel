@@ -1,10 +1,31 @@
 
+/*TASK L: 
+
+Shunday function yozing, u string qabul qilsin va string ichidagi hamma sozlarni 
+chappasiga yozib va sozlar ketma-ketligini buzmasdan stringni qaytarsin.
+MASALAN: reverseSentence("we like coding!") return "ew ekil gnidoc";
+*/
+
+function reverseSentence(sentence: string) {
+  const result: string[] = [];
+  const splitted_arr = sentence.split(" ");
+  for (let i = 0; i < splitted_arr.length; i++) {
+    let cleaned_word = splitted_arr[i].replace(/[!$#@&*()_+]/g, "");
+    let reversed_word = cleaned_word.split("").reverse().join("");
+    result.push(reversed_word);
+  }
+  const final = result.join(" ");
+  return final
+}
+
+console.log(reverseSentence("we like coding!"));
+
+
+
 /*TASK K: 
 
 Shunday function yozing, u string qabul qilsin va string ichidagi unli harflar sonini qaytarsin.
 MASALAN: countVowels("string") return 1;
-
-*/
 
 function countVowels ( string_txt:string ) {
   let count = 0;
@@ -22,7 +43,7 @@ function countVowels ( string_txt:string ) {
 
 console.log(countVowels("string"))
 
-
+*/
 
 
 
