@@ -29,3 +29,10 @@ Project Standards
   Self destroy
   himoyalangan mutahham kamikadze 
   */
+
+
+// Validation 4 xil bo'ladi:
+// Frontend
+// Pipe
+// Backend
+// Database
