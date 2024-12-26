@@ -4,7 +4,7 @@ import Errors, { HttpCode, Message } from "../libs/Errors";
 import { MemberType } from "../libs/enums/member.enum";
 import * as bcrypt from "bcryptjs"
 
-class MemberService {
+class MemberService { 
     private readonly memberModel;
 
     constructor () {
@@ -12,7 +12,6 @@ class MemberService {
     }
 
     /** SPA */
-
     public async signup(input: MemberInput): Promise<Member> {
         const salt = await bcrypt.genSalt();
         input.memberPassword = await bcrypt.hash(input.memberPassword, salt);

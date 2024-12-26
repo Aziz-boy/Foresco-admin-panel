@@ -6,7 +6,7 @@ const memberSchema =  new Schema( {
     type: String,
     enum: MemberType,
     default: MemberType.USER
-  },
+  }, 
 
   memberStatus: {
     type: String,
