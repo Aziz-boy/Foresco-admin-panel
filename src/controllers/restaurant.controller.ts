@@ -87,6 +87,7 @@ restaurantController.processLogin = async (
         });
 
     } catch (err) {
+        
         console.log("Error, processLogin:", err);
         const message = 
           err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG
