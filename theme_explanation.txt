@@ -454,3 +454,6 @@ bizga foydali muhitni yaratib beradi.
 
                               EJS adminka quramiz 
 BSSR ni qurayotganda biz render methodidan faol foydalanamiz yani responsening render methodi mavjud 
+
+Rasmlarni o'zini serverlarda saqlaymiz
+Serverda saqlangan rasmimizning linkini databasega joylaymiz

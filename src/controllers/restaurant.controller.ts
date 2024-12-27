@@ -4,7 +4,7 @@ import MemberService from '../models/Member.service';
 import { LoginInput, MemberInput } from '../libs/types/member';
 import { MemberType } from '../libs/enums/member.enum';
 import { AdminRequest } from '../libs/types/member';
-import Errors, { Message } from '../libs/Errors';
+import Errors, { HttpCode, Message } from '../libs/Errors';
 
 const memberService = new MemberService();
 
@@ -47,10 +47,14 @@ restaurantController.processSignup = async (
     res: Response
 ) => {
     try {
-        console.log("processSignup");
-        // console.log("body:", req.body);
+        console.log("processSignup");        
+        const file = req.file; //postmandan kelayotgan requestni file qismini tutib olyapmiz
+        if(!file) throw new Errors (HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG); //yani image kiritishini majburiy qilyapmiz image kiritmasa error beradi 
+
 
         const newMember: MemberInput = req.body;
+        // console.log(newMember.memberImage)
+        newMember.memberImage = file?.path; //datbazamizga yangi keladigan memberni imagini link shaklida yani filening joylashuvi shaklida bermopmiz
         newMember.memberType = MemberType.RESTAURANT;
 
         const result = await memberService.processSignup(newMember);
@@ -58,7 +62,7 @@ restaurantController.processSignup = async (
 
         req.session.member = result; //browserni ichiga borib cookieni ichida seedni joylaydi va session colectionga yangi member yozadi
         req.session.save( function () {
-          res.send(result);
+          res.redirect("/admin/product/all");   
         });
 
     } catch (err) {
@@ -83,7 +87,7 @@ restaurantController.processLogin = async (
        //TODO SESSIONS  AUTHENTICATION
         req.session.member = result; //browserni ichiga borib cookieni ichida sidni =session idni joylaydi va session colectionga yangi member yozadi
         req.session.save( function () {
-          res.send(result);
+            res.redirect("/admin/product/all");   
         });
 
     } catch (err) {
