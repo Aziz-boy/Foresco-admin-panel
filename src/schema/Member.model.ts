@@ -2,7 +2,7 @@ import mongoose,{Schema} from 'mongoose';
 import { MemberStatus, MemberType } from '../libs/enums/member.enum';
 //Schema first method
 const memberSchema =  new Schema( {
-  membertype: {
+  memberType: {
     type: String,
     enum: MemberType,
     default: MemberType.USER
