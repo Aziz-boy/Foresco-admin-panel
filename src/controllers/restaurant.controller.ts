@@ -54,7 +54,7 @@ restaurantController.processSignup = async (
 
         const newMember: MemberInput = req.body;
         // console.log(newMember.memberImage)
-        newMember.memberImage = file?.path; //datbazamizga yangi keladigan memberni imagini link shaklida yani filening joylashuvi shaklida bermopmiz
+        newMember.memberImage = file?.path.replace(/\\/g, "/");; //datbazamizga yangi keladigan memberni imagini link shaklida yani filening joylashuvi shaklida bermopmiz
         newMember.memberType = MemberType.RESTAURANT;
 
         const result = await memberService.processSignup(newMember);

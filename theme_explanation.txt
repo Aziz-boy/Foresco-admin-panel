@@ -457,3 +457,5 @@ BSSR ni qurayotganda biz render methodidan faol foydalanamiz yani responsening r
 
 Rasmlarni o'zini serverlarda saqlaymiz
 Serverda saqlangan rasmimizning linkini databasega joylaymiz
+
+project run boganda  mongodb automatik ozini ichiga har bitta collectionni yaratib oladi ysni bu AutoMigration deyiladi yani buni schemadan kelib chiqib qiladi  
