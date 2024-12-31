@@ -117,6 +117,26 @@ restaurantController.logout = async (
 };
 
 
+restaurantController.getUsers = async (req: Request, res: Response) => {
+    try {
+        console.log("getUsers");
+        const result = await memberService.getUsers();
+        // console.log(result);
+        res.render("users", { users: result });
+    } catch (err) {
+        console.log("Error, getUsers:", err);
+        res.redirect("/admin/login");
+    }
+};
+
+restaurantController.updateChosenUser = (req: Request, res: Response) => {
+    try {
+        console.log("updateChosenUser");
+    } catch (err) {
+        console.log("Error, updateChosenUser:", err);
+
+    }
+};
 
 //CODE UNDER THIS LINE IS FOR TEST PURPOSE
 restaurantController.checkAuthSession = async (
