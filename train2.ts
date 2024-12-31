@@ -1,3 +1,24 @@
+/* TASK-N: 
+
+Shunday function yozing, u string qabul qilsin va string palindrom yani togri oqilganda ham, 
+orqasidan oqilganda ham bir hil oqiladigan soz ekanligini aniqlab boolean qiymat qaytarsin.
+
+MASALAN: palindromCheck("dad") return true;  palindromCheck("son") return false;
+
+*/
+
+function palindromCheck(str: string){
+     let reversed: string = str.split("").reverse().join("");
+     if(reversed === str) {
+         return true
+     } else {
+         return false
+     }
+}
+
+console.log(palindromCheck("dad"))
+
+
 
 /* TASK M:
 
@@ -10,7 +31,7 @@ MASALAN:     getSquareNumbers([1, 2, 3])
                       {number: 3, square: 9}
                     ];
 
-*/
+
 
 function getSquareNumbers(arr_num: number[]): { number: number, square: number }[] {
   const arr_box: { number: number, square: number }[] = [];
@@ -22,6 +43,8 @@ function getSquareNumbers(arr_num: number[]): { number: number, square: number }
 }
 
 console.log(getSquareNumbers([1, 2, 3]));
+
+*/
 
 /*TASK L: 
 
