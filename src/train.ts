@@ -36,3 +36,19 @@ Project Standards
 // Pipe
 // Backend
 // Database
+
+
+/*
+  Bizda databse validation bolsa yoki backend validation 
+  bolsa nega yana frontend validation qo'yamiz, 
+  Agar front endda notogri malumotlar kiritilayotgan bo'lsa 
+  nega backendga uni yuborish kerak.
+
+
+  Front endda xato malumot bo'lmasa backednda o'tqazamiz 
+  backendda ham xato malumot bo'lmasa databasega o'tqazamiz
+
+  Malumotlar Front enddan back endga name orqali yuboriladi yani htmldagi name attributi orqali.
+  */
+
+  

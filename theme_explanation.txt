@@ -459,3 +459,12 @@ Rasmlarni o'zini serverlarda saqlaymiz
 Serverda saqlangan rasmimizning linkini databasega joylaymiz
 
 project run boganda  mongodb automatik ozini ichiga har bitta collectionni yaratib oladi ysni bu AutoMigration deyiladi yani buni schemadan kelib chiqib qiladi  
+
+
+
+                                  Jquery
+Jquery bu javascriptimizni web loyihamizda osonlikcha mantiqlarni yozishimiz 
+mumkin yani vanila js da 4-5 satrlik matnlarni 1nechta satrlarda yozish imkoni bo'ladi 
+
+
+

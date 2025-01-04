@@ -1,3 +1,8 @@
+
+
+
+
+
 /* TASK-N: 
 
 Shunday function yozing, u string qabul qilsin va string palindrom yani togri oqilganda ham, 
@@ -5,7 +10,7 @@ orqasidan oqilganda ham bir hil oqiladigan soz ekanligini aniqlab boolean qiymat
 
 MASALAN: palindromCheck("dad") return true;  palindromCheck("son") return false;
 
-*/
+
 
 function palindromCheck(str: string){
      let reversed: string = str.split("").reverse().join("");

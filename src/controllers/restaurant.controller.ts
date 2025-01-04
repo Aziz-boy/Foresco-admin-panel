@@ -47,7 +47,8 @@ restaurantController.processSignup = async (
     res: Response
 ) => {
     try {
-        console.log("processSignup");        
+        console.log("processSignup");     
+        // console.log(req.body) //postmandan kelayotgan requestni body qismini tutib olib koryapmiz
         const file = req.file; //postmandan kelayotgan requestni file qismini tutib olyapmiz
         if(!file) throw new Errors (HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG); //yani image kiritishini majburiy qilyapmiz image kiritmasa error beradi 
 
