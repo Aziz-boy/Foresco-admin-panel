@@ -7,7 +7,7 @@ import makeUploader from "./libs/utils/uploader";
 
 
 
-/*** Restaurant ***/
+/*** Restaurant ***/ 
 
 routerAdmin.get('/', restaurantController.goHome);
 

@@ -17,6 +17,7 @@ const store = new MongoDBStore({
 });
 
 /*** 1- ENTERENCE ***/
+
 const app = express();
 // console.log(__dirname)
 app.use(express.static(path.join(__dirname, 'public'))); 
