@@ -1,34 +1,39 @@
+/*TASK-P:
 
-/* TASK-N: 
-TASK-O:
+Shunday function yozing, u object qabul qilsin va arrayni object arrayga otkazib arrayni qaytarsin qaytarsin.
+MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
+*/
+
+function objectToArray(obj: { [key: string]: any }): [string, any][] {
+  return Object.keys(obj).map(key => [key, obj[key]]);
+}
+
+console.log(objectToArray({ a: 10, b: 20 }));
+  
+/* TASK-O:
 
 Shunday function yozing, u har xil valuelardan iborat 
 array qabul qilsin va array ichidagi sonlar
 yigindisini hisoblab chiqqan javobni qaytarsin.
 
 MASALAN: calculateSumOfNumbers([10, "10", {son: 10}, true, 35]) return 45
-*/
 
 
-function calculateSumOfNumbers(input:any[]){
-  for(let i = 0 ; i < input.length; i++) {
-    if(typeof input[i] === "number") {
-      let sum = input[i] + input[i]
-      console.log("sum",sum)
-      //Number(input[i])
-    }else {
-      console.log("Bu son emas")
-      Number(input[i])
-      let sum = input[i] + input[i]
-      console.log(sum)
+
+function calculateSumOfNumbers(input: any[]): number {
+  let sum = 0; 
+
+  for (let i = 0; i < input.length; i++) {
+    if (typeof input[i] === "number") {
+      sum += input[i]; 
     }
   }
 
+  return sum;
 }
 
-console.log(calculateSumOfNumbers(["10",10,20]));
-
-
+console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35])); 
+*/
 
 /* TASK-N: 
 

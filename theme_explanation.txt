@@ -322,7 +322,8 @@ Member Schema Modellar
   postman tool orqali browserdan ololmagan har qanday turdagi methodlarimizni olishimiz mumkin
   Response berilmasa: controllerimizni methodidan response ololmasa API qotib qoladi  
   response turlari :
-       send | json | redirect | end | render 
+       send malum bir malumotni yuborish uchun <p>hello</p>
+       | json | redirect | end | render malum bir fileni yuborishga yani tayyor fayl bor shuni yuboramiz
   
   postni browserdan olomaganimiz uchun postmanga murojaat qildik. 
   app.js dagi admindan otadi routeradminga boradi post methodini izlaydi chunki biz post requestini 

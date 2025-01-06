@@ -72,10 +72,11 @@ function validateForm() {
 }
 
 function previewFileHandler(input,order) {
+    console.log("input.className", input.className); //classname ni consoleda log qilsak class ni qiymatini chiqaryaoti lkn inputni ozini ichida classname degan attribut yoq 
     const imgClassName = input.className;
     console.log("input", input);
 
-    const file = $(`.${imgClassName}`).get(0).files[0]; //jequery ni methodi state propertysi emas
+    const file = $(`.${imgClassName}`).get(0).files[0]; //jequery ni methodi state propertysi emas bu yerdagi 0 bu index emas aynan uni ichida 0 degan narsa bor va uni ichida name size type ga uxshagan narsalar bor
     const fileType = file['type'];
     const validImageType = ["image/jpg", "image/jpeg", "image/png"];
 
