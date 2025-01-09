@@ -18,7 +18,6 @@ productController.getAllProducts = async (req: Request, res: Response) => {
         console.log("getAllProducts");
         const data = await productService.getAllProducts();
         console.log("products:", data);
-        
         res.render("products", {products: data})
         
     } catch (err) {
@@ -27,10 +26,10 @@ productController.getAllProducts = async (req: Request, res: Response) => {
         else res.status(Errors.standard.code).json(Errors.standard);
 
     }
- };
+};
 
 
- productController.createNewProduct = async (req: AdminRequest, res: Response) => {
+productController.createNewProduct = async (req: AdminRequest, res: Response) => {
     try {
         console.log("createNewProduct");
         // console.log(req.files);
