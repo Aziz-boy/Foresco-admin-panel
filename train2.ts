@@ -1,10 +1,33 @@
+/* TASK-U:
+
+Shunday function yozing, uni number parametri bolsin va 0 dan berilgan parametrgacha bolgan oraliqdagi faqat toq sonlar nechtaligini return qilsin
+MASALAN: sumOdds(9) return 4; sumOdds(11) return 5;
+
+*/
+
+function sumOdds(n: number): number {
+  let count = 0;
+  for (let i = 1; i < n; i++) {
+    if (i % 2 !== 0) {
+      count += 1;
+    }
+  }
+  return count;
+}
+
+console.log(sumOdds(9));
+console.log(sumOdds(11));
+
+
+
 /* TASK-S:
 
 Shunday function yozing, u numberlardan tashkil topgan array qabul qilsin
 va osha numberlar orasidagi tushib qolgan sonni topib uni return qilsin
 
 MASALAN: missingNumber([3, 0, 1]) return 2 
-*/
+
+
 
 function missingNumber(nums: number[]): number {
   const n = nums.length;
@@ -15,7 +38,7 @@ function missingNumber(nums: number[]): number {
 
 
 console.log(missingNumber([3, 0, 1])); 
-
+*/
 
 /* TASK R
 
