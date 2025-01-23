@@ -4,7 +4,8 @@ import { T } from "../libs/types/common";
 import MemberService from "../models/Member.service";
 import AuthService from "../models/Auth.service";
 import { LoginInput, Member, MemberInput } from "../libs/types/member";
-import Errors from "../libs/Errors";
+import Errors, { HttpCode } from "../libs/Errors";
+import { AUTH_TIMER } from "../libs/config";
 
 //REACT uchun
 const memberService = new MemberService();
@@ -18,10 +19,14 @@ memberController.signup = async (req: Request, res: Response) => {
     const input: MemberInput = req.body,
       result: Member = await memberService.signup(input);
     const token = await authService.createToken(result);
-    //TODO Token AUTHENTICATION integration
-    console.log("token: ", token);
+    res.cookie("accessToken", token, {
+      maxAge: AUTH_TIMER * 360 * 100, 
+      httpOnly: false,
+   });//bizga murojaat etayotgan browserga qaysi nom bilan tokenni saqlashni aytishga kerak 
 
-    res.json({ member: result });
+ //console.log("token: ", token); //biz kiritgan payload objectimizni resultimiz orqali inson tushuna olmaydigan stringa ogirib berdi
+ //  console.log("result: ", result);
+ res.status(HttpCode.CREATED).json({ member: result, accessToken: token });
   } catch (err) {
     console.log("Error, signup:", err);
     if (err instanceof Errors) res.status(err.code).json(err);
@@ -37,10 +42,14 @@ memberController.login = async (req: Request, res: Response) => {
       result = await memberService.login(input),
       token = await authService.createToken(result); //await qo'ymasa nima boladi
 
-    console.log("token: ", token); //biz kiritgan payload objectimizni resultimiz orqali inson tushuna olmaydigan stringa ogirib berdi
-    //TODO Token AUTHENTICATION integration
+      res.cookie("accessToken", token, {
+         maxAge: AUTH_TIMER * 360 * 100, 
+         httpOnly: false,
+      });//bizga murojaat etayotgan browserga qaysi nom bilan tokenni saqlashni aytishga kerak 
+
+    //console.log("token: ", token); //biz kiritgan payload objectimizni resultimiz orqali inson tushuna olmaydigan stringa ogirib berdi
     //  console.log("result: ", result);
-    res.json({ member: result });
+    res.status(HttpCode.OK).json({ member: result, accessToken: token });
   } catch (err) {
     console.log("Error, login:", err);
     if (err instanceof Errors) res.status(err.code).json(err);
