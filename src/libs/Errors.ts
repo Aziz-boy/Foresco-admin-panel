@@ -20,7 +20,8 @@ USED_NICK_PHONE = "You are inserting already used Nick or Phone !",
 NO_MEMBER_NICK = "No member with that member NickName !",
 BLOCKED_USER = "Your account is blocked, please contact to Restaurant for more information",
 WRONG_PASSWORD = "Wrong password, please try again !",
-NOT_AUTHENTICATED = "You are not Authenticated, Please login first"
+NOT_AUTHENTICATED = "You are not Authenticated, Please login first",
+TOKEN_CREATION_FAILED = "Token creation error !",
 }
 
 class Errors extends Error {
