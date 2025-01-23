@@ -4,7 +4,7 @@ import { T } from "../libs/types/common";
 import MemberService from "../models/Member.service";
 import AuthService from "../models/Auth.service";
 import { LoginInput, Member, MemberInput } from "../libs/types/member";
-import Errors, { HttpCode } from "../libs/Errors";
+import Errors, { HttpCode, Message } from "../libs/Errors";
 import { AUTH_TIMER } from "../libs/config";
 
 //REACT uchun
@@ -20,13 +20,13 @@ memberController.signup = async (req: Request, res: Response) => {
       result: Member = await memberService.signup(input);
     const token = await authService.createToken(result);
     res.cookie("accessToken", token, {
-      maxAge: AUTH_TIMER * 360 * 100, 
+      maxAge: AUTH_TIMER * 360 * 100,
       httpOnly: false,
-   });//bizga murojaat etayotgan browserga qaysi nom bilan tokenni saqlashni aytishga kerak 
+    }); //bizga murojaat etayotgan browserga qaysi nom bilan tokenni saqlashni aytishga kerak
 
- //console.log("token: ", token); //biz kiritgan payload objectimizni resultimiz orqali inson tushuna olmaydigan stringa ogirib berdi
- //  console.log("result: ", result);
- res.status(HttpCode.CREATED).json({ member: result, accessToken: token });
+    //console.log("token: ", token); //biz kiritgan payload objectimizni resultimiz orqali inson tushuna olmaydigan stringa ogirib berdi
+    //  console.log("result: ", result);
+    res.status(HttpCode.CREATED).json({ member: result, accessToken: token });
   } catch (err) {
     console.log("Error, signup:", err);
     if (err instanceof Errors) res.status(err.code).json(err);
@@ -42,16 +42,34 @@ memberController.login = async (req: Request, res: Response) => {
       result = await memberService.login(input),
       token = await authService.createToken(result); //await qo'ymasa nima boladi
 
-      res.cookie("accessToken", token, {
-         maxAge: AUTH_TIMER * 360 * 100, 
-         httpOnly: false,
-      });//bizga murojaat etayotgan browserga qaysi nom bilan tokenni saqlashni aytishga kerak 
+    res.cookie("accessToken", token, {
+      maxAge: AUTH_TIMER * 360 * 100,
+      httpOnly: false,
+    }); //bizga murojaat etayotgan browserga qaysi nom bilan tokenni saqlashni aytishga kerak
 
     //console.log("token: ", token); //biz kiritgan payload objectimizni resultimiz orqali inson tushuna olmaydigan stringa ogirib berdi
     //  console.log("result: ", result);
     res.status(HttpCode.OK).json({ member: result, accessToken: token });
   } catch (err) {
     console.log("Error, login:", err);
+    if (err instanceof Errors) res.status(err.code).json(err);
+    else res.status(Errors.standard.code).json(Errors.standard);
+  }
+};
+
+memberController.verifyAuth = async (req: Request, res: Response) => {
+  try {
+   let member = null;
+   const token = req.cookies["accessToken"];
+   if(token) member = await authService.checkAuth(token); // shu yerga awaut qo'ymasa nima boladi
+  
+   if(!member) 
+      throw new Errors(HttpCode.UNAUTHORIZED, Message.NOT_AUTHENTICATED);
+
+   console.log("member:", member);
+   res.status(HttpCode.OK).json({ member: member });
+} catch (err) {
+    console.log("Error, verifyAuth:", err);
     if (err instanceof Errors) res.status(err.code).json(err);
     else res.status(Errors.standard.code).json(Errors.standard);
   }
