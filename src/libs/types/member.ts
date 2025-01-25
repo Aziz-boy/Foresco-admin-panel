@@ -48,6 +48,12 @@ export interface MemberUpdateInput {
     memberImage?: string;
 }
 
+export  interface ExtendedRequest extends Request {
+    member: Member,// Requestni ichida by default member mavjud emas va bizn shuni set qilyapmiz 
+    file: Express.Multer.File;
+    files: Express.Multer.File[];
+}
+
 export  interface AdminRequest extends Request {
     member: Member,
     session: Session & {member: Member}; // Session ichidagi memberni to'g'ridan to'g'ri requestga biriktirish
