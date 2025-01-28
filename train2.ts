@@ -1,9 +1,46 @@
+
+/* TASK-U:
+
+TASK-X
+
+Shunday function yozing, uni object va string parametrlari bo'lsin.
+Bu function, birinchi object parametri tarkibida, kalit sifatida ikkinchi string parametri
+necha marotaba takrorlanganlini sanab qaytarsin.
+
+Eslatma => Nested object'lar ham sanalsin
+
+MASALAN: countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model') return 2
+
+Yuqoridagi misolda, birinchi argument object, ikkinchi argument 'model'.
+Funktsiya, shu ikkinchi argument 'model', birinchi argument object
+tarkibida kalit sifatida 2 marotaba takrorlanganligi uchun 2 soni return qilmoqda
+
+*/
+
+function countOccurrences(obj: Record<string, any>, key: string): number {
+  let count = 0;
+  
+  for (const k in obj) {
+      if (k === key) count++;
+      
+      if (typeof obj[k] === 'object' && obj[k] !== null) {
+          count += countOccurrences(obj[k], key);
+      }
+  }
+  
+  return count;
+}
+
+// Test case
+const example = { model: 'Bugatti', steer: { model: 'HANKOOK', size: 30 } };
+console.log(countOccurrences(example, 'model'));
+
 /* TASK-U:
 
 Shunday function yozing, uni number parametri bolsin va 0 dan berilgan parametrgacha bolgan oraliqdagi faqat toq sonlar nechtaligini return qilsin
 MASALAN: sumOdds(9) return 4; sumOdds(11) return 5;
 
-*/
+
 
 function sumOdds(n: number): number {
   let count = 0;
@@ -18,7 +55,7 @@ function sumOdds(n: number): number {
 console.log(sumOdds(9));
 console.log(sumOdds(11));
 
-
+*/
 
 /* TASK-S:
 
