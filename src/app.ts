@@ -5,7 +5,6 @@ import routerAdmin from "./router-admin";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import { MORGAN_FORMAT } from "./libs/config";
-
 import { T } from "./libs/types/common";
 import session from "express-session";
 import ConnectMongoDB from "connect-mongodb-session";
@@ -21,6 +20,7 @@ const store = new MongoDBStore({
 const app = express();
 // console.log(__dirname)
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/uploads", express.static( "./uploads"));
 app.use(express.urlencoded({ extended: true })); //Traditional api ni ochib beradi
 app.use(express.json()); //REST api sifatida request bolayotgan json datalarni otkazsihga ruxsta beryapmiz
 app.use(cookieParser());
@@ -42,6 +42,8 @@ app.use(
   app.use(function (req, res, next) {
     const sessionInstance = req.session as T;
     res.locals.member = sessionInstance.member;
+    console.log("sessionInstance", sessionInstance);
+    console.log("res.locals.member", res.locals.member);
     next();
   });
 

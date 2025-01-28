@@ -9,6 +9,7 @@ import Errors, { HttpCode, Message } from "../libs/Errors";
 import { MemberType, MemberStatus } from "../libs/enums/member.enum";
 import * as bcrypt from "bcryptjs";
 import { shapeIntoMongooseObjectId } from "../libs/config";
+import { response } from "express";
 
 class MemberService {
   private readonly memberModel;
@@ -19,8 +20,8 @@ class MemberService {
 
   /** SPA */
   public async signup(input: MemberInput): Promise<Member> {
-    const salt = await bcrypt.genSalt();
-    input.memberPassword = await bcrypt.hash(input.memberPassword, salt);
+    const salt = await bcrypt.genSalt(); //faqat tartibsiz raqamni yasayabti
+    input.memberPassword = await bcrypt.hash(input.memberPassword, salt); //hash esa tartibsiz raqam bilan ozimizni passwordni birlashtirib hash qiladi
 
     try {
       const result = await this.memberModel.create(input); // db da inputni create qiladi
@@ -66,9 +67,22 @@ class MemberService {
       .findOne({ _id: memberId, memberStatus: MemberStatus.ACTIVE })
       .exec();
 
-      if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
-      return result;
+    return result;
+  }
+
+  public async updateMember(
+    member: Member,
+    input: MemberUpdateInput
+  ): Promise<Member> {
+    const memberId = shapeIntoMongooseObjectId(member._id);
+    const result = await this.memberModel
+      .findByIdAndUpdate({ _id: memberId }, input, { new: true })
+      .exec();
+    if (!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
+
+    return result;
   }
 
   /** SSR */
