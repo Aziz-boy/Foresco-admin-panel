@@ -1,4 +1,3 @@
- //Ecmajs ni ishlatyapmiz
 console.log("Server is running...");
 import dotenv from 'dotenv'; 
 dotenv.config();

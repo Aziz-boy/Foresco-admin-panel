@@ -19,6 +19,15 @@ class MemberService {
   }
 
   /** SPA */
+  public async getRestaurant(): Promise<Member> {
+    const result = await this.memberModel
+      .findOne({ memberType: MemberType.RESTAURANT })
+      .exec();
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+    return result;
+  }
+
   public async signup(input: MemberInput): Promise<Member> {
     const salt = await bcrypt.genSalt(); //faqat tartibsiz raqamni yasayabti
     input.memberPassword = await bcrypt.hash(input.memberPassword, salt); //hash esa tartibsiz raqam bilan ozimizni passwordni birlashtirib hash qiladi
