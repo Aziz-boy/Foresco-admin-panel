@@ -9,6 +9,7 @@ import {
 } from "../libs/types/product";
 import ProductModel from "../schema/Product.model";
 import { T } from "../libs/types/common";
+import { ObjectId } from "mongoose";
 
 class ProductService {
   private readonly productModel;
@@ -27,7 +28,7 @@ class ProductService {
       match.productCollection = inquiry.productCollection;
 
     if (inquiry.search) {
-      match.productName = { $regex: new RegExp(inquiry.search, "i")};
+      match.productName = { $regex: new RegExp(inquiry.search, "i") };
     }
     const sort: T =
       inquiry.order === "ProductPrice"
@@ -44,6 +45,21 @@ class ProductService {
       .exec();
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
+    return result;
+  }
+
+  public async getProduct(
+    memberId: ObjectId | null,
+    id: string
+  ): Promise<Product> {
+    const productId = shapeIntoMongooseObjectId(id);
+
+    let result = await this.productModel
+      .findOne({ _id: productId, productStatus: ProductStatus.PROCESS })
+      .exec();
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+   
+    //TODO if authenticated users => first => view log Creation
     return result;
   }
 
