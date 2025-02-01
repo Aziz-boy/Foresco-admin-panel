@@ -153,7 +153,6 @@ class MemberService {
     }
 
     return await this.memberModel.findById(member._id).exec();
-
     // console.log("result:" , result)
     // return result;
   }
