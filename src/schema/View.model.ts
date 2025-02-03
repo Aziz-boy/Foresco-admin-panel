@@ -3,7 +3,7 @@ import { ViewGroup } from "../libs/enums/view.enum";
 
 const viewSchema = new Schema(
   {
-    type: {
+    viewGroup: {
       type: String,
       enum: ViewGroup,
       required: true,

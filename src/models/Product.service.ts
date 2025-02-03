@@ -58,6 +58,7 @@ class ProductService {
     memberId: ObjectId | null,
     id: string
   ): Promise<Product> {
+    console.log("man serviceni boshiga keldim");
     const productId = shapeIntoMongooseObjectId(id);
     let result = await this.productModel
       .findOne({
@@ -66,14 +67,17 @@ class ProductService {
       })
       .exec();
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
-
+    console.log("man serviceni o'rtasiga keldim");
+    console.log("memberID", memberId)
     if (memberId) {
+      
       //Check View Log Existance
       const input: ViewInput = {
         memberId: memberId,
         viewRefId: productId,
         viewGroup: ViewGroup.PRODUCT,
       };
+
       const existView = await this.viewService.checkViewExistence(input);
       console.log("existView: ", existView);
       if (!existView) {

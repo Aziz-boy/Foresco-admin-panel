@@ -161,7 +161,6 @@ memberController.retrieveAuth = async (
   next: NextFunction
 ) => {
   try {
-    let member = null;
     const token = req.cookies["accessToken"]; // bizni requestimizdagi cookini ichidan access tokenni tekshiradi
     if (token) req.member = await authService.checkAuth(token); //agar mavjud bolsa payloadimizni memberga yukalb beradi     //TODO shu yerga await qo'ymasa nima boladi
 
