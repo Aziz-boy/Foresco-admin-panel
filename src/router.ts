@@ -43,6 +43,12 @@ router.post(
   orderController.createOrder
 );
 
+router.get(
+  "/order/all",
+  memberController.verifyAuth,
+  orderController.getMyOrders
+);
+
 export default router;
 
 //router bu yo'nalish ko'rsatuvchi
