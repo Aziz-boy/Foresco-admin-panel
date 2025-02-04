@@ -4,6 +4,7 @@ import memberController from "./controllers/member.controller";
 import uploader from "./libs/utils/uploader";
 import productController from "./controllers/product.controller";
 import orderController from "./controllers/order.controller";
+import { OrderUpdateInput } from './libs/types/order';
 
 /** Member **/
 router.get("/member/restaurant", memberController.getRestaurant);
@@ -47,6 +48,13 @@ router.get(
   "/order/all",
   memberController.verifyAuth,
   orderController.getMyOrders
+);
+
+
+router.post(
+  "/order/update",
+  memberController.verifyAuth,
+  orderController.updateOrder
 );
 
 export default router;
