@@ -1,7 +1,56 @@
 
-/* TASK-U:
+/* TASK-Z: 
 
-TASK-X
+Shunday function yozing. Bu function sonlardan iborat array
+qabul qilsin. Function'ning vazifasi array tarkibidagi juft
+sonlarni topib ularni yig'disini qaytarsin.
+
+MASALAN:
+sumEvens([1, 2, 3]); return 2;
+sumEvens([1, 2, 3, 2]); return 4;
+
+Yuqoridagi misolda, bizning funktsiya
+berilayotgan array tarkibidagi sonlar ichidan faqatgina juft bo'lgan
+sonlarni topib, ularni hisoblab yig'indisini qaytarmoqda.
+
+
+*/
+
+function sumEvens(numbers: number[]): number {
+  return numbers.filter(num => num % 2 === 0).reduce((sum, num) => sum + num, 0);
+}
+
+console.log(sumEvens([1, 2, 3])); // 2
+console.log(sumEvens([1, 2, 3, 2])); // 4
+
+
+
+/* TASK-Y: 
+
+Shunday function yozing, uni 2'ta array parametri bo'lsin.
+Bu function ikkala arrayda ham ishtirok etgan bir xil
+qiymatlarni yagona arrayga joylab qaytarsin.
+
+MASALAN: findIntersection([1,2,3], [3,2,0]) return [2,3]
+
+Yuqoridagi misolda, argument sifatida berilayotgan array'larda
+o'xshash sonlar mavjud. Function'ning vazifasi esa ana shu
+ikkala array'da ishtirok etgan o'xshash sonlarni yagona arrayga
+joylab return qilmoqda.
+
+function findIntersection<T>(arr1: T[], arr2: T[]): T[] {
+    return [...new Set(arr1.filter(value => arr2.includes(value)))];
+}
+
+// Test
+console.log(findIntersection([1, 2, 3], [3, 2, 0])); // [2, 3]
+console.log(findIntersection(["a", "b", "c"], ["c", "a", "d"])); // ["a", "c"]
+
+
+
+*/
+
+/*TASK-X
 
 Shunday function yozing, uni object va string parametrlari bo'lsin.
 Bu function, birinchi object parametri tarkibida, kalit sifatida ikkinchi string parametri
@@ -15,7 +64,7 @@ Yuqoridagi misolda, birinchi argument object, ikkinchi argument 'model'.
 Funktsiya, shu ikkinchi argument 'model', birinchi argument object
 tarkibida kalit sifatida 2 marotaba takrorlanganligi uchun 2 soni return qilmoqda
 
-*/
+
 
 function countOccurrences(obj: Record<string, any>, key: string): number {
   let count = 0;
@@ -34,6 +83,7 @@ function countOccurrences(obj: Record<string, any>, key: string): number {
 // Test case
 const example = { model: 'Bugatti', steer: { model: 'HANKOOK', size: 30 } };
 console.log(countOccurrences(example, 'model'));
+*/
 
 /* TASK-U:
 
@@ -260,13 +310,7 @@ console.log(countVowels("string"))
 
 */
 
-
-
-
-
-/*
-
-TASK I:
+/*TASK I:
 
 Shunday function tuzing, u parametrdagi array ichida eng ko'p
 takrorlangan raqamni topib qaytarsin.
@@ -297,7 +341,6 @@ console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]));
 
 */
 
-
 /*H2-TASK: 
 
 Shunday function tuzing, unga string argument pass bolsin. Function ushbu agrumentdagi digitlarni yangi stringda return qilsin
@@ -323,12 +366,7 @@ console.log(getDigits("m14i1t"));
 
 */
 
-
-
-
-
-/*
-H-TASK: 
+/* H-TASK: 
 
 shunday function tuzing, u integerlardan iborat arrayni argument sifatida 
 qabul qilib, faqat positive qiymatlarni olib string holatda return qilsin
@@ -368,7 +406,6 @@ let result = getPositive([1, -4, 2,]);
 console.log(result);
 
 */
-
 
 /*
 
