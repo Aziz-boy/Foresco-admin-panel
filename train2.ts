@@ -1,3 +1,12 @@
+/*TASK-ZB:  
+    Shunday function yozing, uni 2 ta number parametri bolsin va berilgan sonlar orasidan random raqam return qilsin
+    MASALAN: randomBetween(30, 50) return 45
+*/
+function randomBetween(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+console.log(randomBetween(30, 50)); // 30 va 50 orasidagi tasodifiy son
 
 /* TASK-Z: 
 
@@ -14,7 +23,7 @@ berilayotgan array tarkibidagi sonlar ichidan faqatgina juft bo'lgan
 sonlarni topib, ularni hisoblab yig'indisini qaytarmoqda.
 
 
-*/
+
 
 function sumEvens(numbers: number[]): number {
   return numbers.filter(num => num % 2 === 0).reduce((sum, num) => sum + num, 0);
@@ -23,7 +32,7 @@ function sumEvens(numbers: number[]): number {
 console.log(sumEvens([1, 2, 3])); // 2
 console.log(sumEvens([1, 2, 3, 2])); // 4
 
-
+*/
 
 /* TASK-Y: 
 
@@ -534,7 +543,6 @@ function findLongestWord(input: string): string {
 */
 //TASK SRC PAPKASINI ICHIDAGI train.ts da Bekzod aka  shu yerga yozishimiz kerak ekanligini videoda aytdilar
 
-
 /*  
 function largest(n, array) {
   let sorted_array = array.sort((a, b) => a - b).reverse();
@@ -969,8 +977,8 @@ gitara_brat = 98
 console.log(gitara_brat)
 */
 
-// any static type checking boladi js oxshab qoladi luboy narsani oladi 
-// unknown luboy narsani oladi lkn safer chunki uni ustida operation bajarishdan typeof bilan typeni define qilishni soarydi   
+// any static type checking boladi js oxshab qoladi luboy narsani oladi
+// unknown luboy narsani oladi lkn safer chunki uni ustida operation bajarishdan typeof bilan typeni define qilishni soarydi
 
 // let w: unknown = 1;
 // w = "string";
@@ -982,11 +990,9 @@ console.log(gitara_brat)
 
 // }
 
-
 // if (typeof w === "boolean") {
 //     console.log(w)
 // }
-
 
 // let y: null = null;
 // let x:undefined = undefined;
@@ -995,13 +1001,9 @@ console.log(gitara_brat)
 // const ages : number[] = [18, 20, 20 ]
 // const nulls :null[] = [null, null, null, null]
 
-
 // readonlyni bersak bu bizga arrayni himoya qilishga yordam berar ekan yani bu bilan biz protect qilamiz bu degani bu arrayga nisbatan mutable method ishlatib bomaydi
 // const names: readonly string[] = ["Dylan"];
-// console.log(names.slice(0,1)); 
- 
-
-
+// console.log(names.slice(0,1));
 
 // tuple is types predefined array yani bu orqali arrayimizni qaysi indexida nima malumot turishini aytishimiz mumkin ekan
 
@@ -1011,13 +1013,12 @@ console.log(gitara_brat)
 
 // console.log(tuplecha)
 
-//bi tupleda ham readonlyni ishlatishimiz mumkin 
-// let kattatuple : readonly [string,number, null] 
+//bi tupleda ham readonlyni ishlatishimiz mumkin
+// let kattatuple : readonly [string,number, null]
 
 // kattatuple= ["hello",77777,null]
 
 // console.log(kattatuple.slice(0,2))
-
 
 // const car: {type:string, model?:string,year:number} = {
 
@@ -1033,7 +1034,6 @@ console.log(gitara_brat)
 // console.log(nameAgeMap);
 // // Output: { [Symbol(key1)]: undefined }
 
-
 // enum Yonalish{
 //    notFund = "north",
 //    badRequest = "bad" ,
@@ -1044,7 +1044,6 @@ console.log(gitara_brat)
 
 // console.log(Yonalish.notFund)
 
-
 // function wordSearch(query, seq){
 //   let lowerCaseQuery = query.toLowerCase()
 //   let lowerCaseString = seq. map(function toLower(sequ) {
@@ -1052,7 +1051,7 @@ console.log(gitara_brat)
 //     });
 
 //  let yangi = lowerCaseString.filter(item => item.includes(lowerCaseQuery))
- 
+
 //   return yangi
 // }
 
