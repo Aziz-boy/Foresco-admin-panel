@@ -10,7 +10,7 @@ Yuqoridagi misolda, 0°C, 32°F'ga teng.
 Yoki 10 gradus Selsiy, 50 Farenhaytga teng.
 
 °C va °F => Tempraturani o'lchashda ishlatiladigan o'lchov birligi.
-*/
+=
 function celsiusToFahrenheit(celsius) {
   return (celsius * 9/5) + 32;
 }
@@ -18,6 +18,7 @@ function celsiusToFahrenheit(celsius) {
 // Misollar
 console.log(celsiusToFahrenheit(0));  // 32
 console.log(celsiusToFahrenheit(10)); // 50
+*/
 
 /*TASK-ZB:  
     Shunday function yozing, uni 2 ta number parametri bolsin va berilgan sonlar orasidan random raqam return qilsin
@@ -81,7 +82,7 @@ console.log(findIntersection(["a", "b", "c"], ["c", "a", "d"])); // ["a", "c"]
 
 */
 
-/*TASK-X
+/* TASK-X
 
 Shunday function yozing, uni object va string parametrlari bo'lsin.
 Bu function, birinchi object parametri tarkibida, kalit sifatida ikkinchi string parametri
@@ -296,7 +297,7 @@ console.log(getSquareNumbers([1, 2, 3]));
 
 */
 
-/*TASK L: 
+/* TASK L: 
 
 Shunday function yozing, u string qabul qilsin va string ichidagi hamma sozlarni 
 chappasiga yozib va sozlar ketma-ketligini buzmasdan stringni qaytarsin.
@@ -318,7 +319,7 @@ function reverseSentence(sentence: string) {
 console.log(reverseSentence("we like coding!"));
 */
 
-/*TASK K: 
+/* TASK K: 
 
 Shunday function yozing, u string qabul qilsin va string ichidagi unli harflar sonini qaytarsin.
 MASALAN: countVowels("string") return 1;
@@ -341,7 +342,7 @@ console.log(countVowels("string"))
 
 */
 
-/*TASK I:
+/* TASK I:
 
 Shunday function tuzing, u parametrdagi array ichida eng ko'p
 takrorlangan raqamni topib qaytarsin.
@@ -372,7 +373,7 @@ console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]));
 
 */
 
-/*H2-TASK: 
+/* H2-TASK: 
 
 Shunday function tuzing, unga string argument pass bolsin. Function ushbu agrumentdagi digitlarni yangi stringda return qilsin
 MASALAN: getDigits("m14i1t") return qiladi "141" 

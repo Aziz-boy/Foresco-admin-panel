@@ -1,5 +1,6 @@
 import express, { urlencoded } from "express";
 import path from "path";
+import cors from "cors";
 import router from "./router";
 import routerAdmin from "./router-admin";
 import morgan from "morgan";
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/uploads", express.static( "./uploads"));
 app.use(express.urlencoded({ extended: true })); //Traditional api ni ochib beradi
 app.use(express.json()); //REST api sifatida request bolayotgan json datalarni otkazsihga ruxsta beryapmiz
+app.use(cors({credentials: true, origin: true}));
 app.use(cookieParser());
 app.use(morgan(MORGAN_FORMAT));
 
