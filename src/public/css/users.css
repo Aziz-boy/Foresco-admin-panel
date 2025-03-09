@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(-45deg, #110303bf, #e37813, #011c1aba, #968383);
+  background: linear-gradient(-45deg, #48B697, #7ce376, #4fddd3, #b5c96b);
 }
 
 .users-container a {
@@ -16,11 +16,11 @@
 }
 
 .users-container .nav-item a {
-  color: #e3c08d;
+  color: #0d480f;
 }
 
 .users-container .nav-item a.disabled {
-  color: #898071;
+  color: #125311;
 }
 
 .users-container .navigation-menu {
@@ -79,7 +79,7 @@
   font-weight: 400;
   font-size: 30px;
   line-height: 25px;
-  color: #ffffff;
+  color: blue;
 }
 
 .users-container select:focus {
