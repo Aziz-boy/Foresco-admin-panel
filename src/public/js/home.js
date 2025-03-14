@@ -1,5 +1,50 @@
 console.log("Home frontend javascript file");
 
+document.addEventListener("DOMContentLoaded", () => {
+  // Sphere animation
+  const sphereAnimation = anime({
+    targets: ".sphere path",
+    strokeDashoffset: [anime.setDashoffset, 0],
+    easing: "easeInOutSine",
+    duration: 2500,
+    delay: function (el, i) {
+      return i * 100;
+    },
+    direction: "alternate",
+    loop: true,
+  });
+
+  // Fade in content
+  anime({
+    targets: ".content-wrapper",
+    opacity: [0, 1],
+    translateY: [20, 0],
+    easing: "easeOutExpo",
+    duration: 1200,
+    delay: 300,
+  });
+
+  // Stagger feature cards
+  anime({
+    targets: ".feature-card",
+    opacity: [0, 1],
+    translateY: [40, 0],
+    easing: "easeOutExpo",
+    duration: 1000,
+    delay: anime.stagger(150, { start: 600 }),
+  });
+
+  // Pulse animation for CTA buttons
+  anime({
+    targets: ".primary-button",
+    scale: [1, 1.05],
+    easing: "easeInOutQuad",
+    duration: 1500,
+    direction: "alternate",
+    loop: true,
+  });
+});
+
 function fitElementToParent(el, padding) {
   let timeout = null;
 

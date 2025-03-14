@@ -7,15 +7,15 @@
     <form onsubmit="return validateSignupForm()" action="/admin/signup" method="POST" enctype="multipart/form-data">
         <div class="signup-frame">
             <div class="signup-top">
-                <span>Restaurant Registration</span>
+                <span>Agency Registration</span>
                 <div>Go back <a href="/admin">Home</a></div>
                 <p>Already signed up? <a href="/admin/login">Login</a></p>
             </div>
 
             <div class="sign-input-frame">
                 <div class="sign-up-frame">
-                    <label>Restaurant Name *</label>
-                    <input type="text" name="memberNick" class="member-nick" placeholder="Enter restaurant name" required>
+                    <label>Agency Name *</label>
+                    <input type="text" name="memberNick" class="member-nick" placeholder="Enter agency name" required>
                 </div>
                 <div class="sign-up-frame">
                     <label>Phone Number *</label>
@@ -36,9 +36,9 @@
 
             <div class="signup-input-frame">
                 <div class="media-frame">
-                    <img class="upload-img-frame" src="/img/default.jpeg" alt="Restaurant Preview Image" id="preview-image">
+                    <img class="upload-img-frame" src="/img/default.png" alt="Restaurant Preview Image" id="preview-image">
                     <div class="upload-container">
-                        <span class="media-text">Restaurant Image</span>
+                        <span class="media-text">Agency Image</span>
                         <div class="file-box preview-image">
                           <input class="upload-name" value="Choose image" disabled="disabled">
                           <label for="input-file" class="file-input-label">Upload Image</label>

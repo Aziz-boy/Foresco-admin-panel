@@ -16,7 +16,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/admin/product/all">
-            <i class="fas fa-utensils"></i> Menu
+            <i class="fas fa-university"></i> Services
           </a>
         </li>
         <li class="nav-item">
@@ -40,17 +40,17 @@
       <div class="board">
         <div class="dishes-table">
           <span class="new-dish-txt">
-            RESTAURANT MENU
+            SERVICES MENU
           </span>
           <table class="table table-bordered table-hover">
             <thead>
               <tr>
                 <th scope="col">T/r</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Product Type</th>
-                <th scope="col">Product Volume</th>
-                <th scope="col">Product Price</th>
-                <th scope="col">Product Left Count</th>
+                <th scope="col">Service Name</th>
+                <th scope="col">Service Type</th>
+                <th scope="col">Service Volume</th>
+                <th scope="col">Service Price</th>
+                <th scope="col">Service Left Count</th>
                 <th scope="col">Status</th>
               </tr>
             </thead>
@@ -78,38 +78,38 @@
           
           <div class="long-input" style="align-items: flex-end; margin-bottom: 25px">
             <button class="btn btn-primary" id="process-btn">
-              <i class="fas fa-plus"></i> New Product
+              <i class="fas fa-plus"></i> New Service
             </button>
           </div>
         </div>
 
         <form onsubmit="return validateForm()" action="/admin/product/create" method="POST" class="dish-container" enctype="multipart/form-data">
   
-          <h2 class="new-dish-txt">NEW PRODUCT DETAIL</h2>
+          <h2 class="new-dish-txt">NEW SERVICE DETAIL</h2>
         
           <!-- Product Name -->
           <div class="input-group">
-            <label>Product Name</label>
+            <label>Service Name</label>
             <input type="text" name="productName" placeholder="Enter product name" required />
-          </div>
+          </div> 
         
           <input name="productStatus" value="PAUSE" hidden />
         
           <!-- Product Price -->
           <div class="input-group">
-            <label>Product Price</label>
+            <label>Service Price</label>
             <input type="number" name="productPrice" placeholder="Enter price" required />
           </div>
         
           <!-- Product Left Count -->
           <div class="input-group">
-            <label>Product Left Counts</label>
+            <label>Service Left Counts</label>
             <input type="number" name="productLeftCount" placeholder="Enter quantity available" required />
           </div>
         
           <!-- Product Type -->
           <div class="input-group">
-            <label>Product Type</label>
+            <label>Service Type</label>
             <select name="productCollection" onchange="toggleVolumeFields()">
               <option value="DISH" selected>Dish</option>
               <option value="SALAD">Salad</option>
@@ -144,37 +144,38 @@
         
           <!-- Product Description -->
           <div class="input-group">
-            <label>Product Description</label>
+            <label>Service Description</label>
             <textarea name="productDesc" placeholder="Enter product description"></textarea>
           </div>
         
           <!-- Product Images -->
           <div class="img-upload-container">
-            <label>Product Images</label>
+            <label>Service Images</label>
             <div class="media-frame">
               <!-- Image Upload Inputs -->
-              <div class="upload-img-box">
+              <div class="upload-img-box" onclick="document.getElementById('file-upload-1').click();">
                 <img src="/img/upload.svg" id="image-section-1" />
-                <input type="file" name="productImages" class="image-upload" required onchange="previewFileHandler(this, 1)" />
+                <input type="file" id="file-upload-1" name="productImages" class="image-upload" required onchange="previewFileHandler(this, 1)" hidden />
               </div>
-              <div class="upload-img-box">
+              <div class="upload-img-box" onclick="document.getElementById('file-upload-2').click();">
                 <img src="/img/upload.svg" id="image-section-2" />
-                <input type="file" name="productImages" class="image-upload" onchange="previewFileHandler(this, 2)" />
+                <input type="file" id="file-upload-2" name="productImages" class="image-upload" onchange="previewFileHandler(this, 2)" hidden />
               </div>
-              <div class="upload-img-box">
+              <div class="upload-img-box" onclick="document.getElementById('file-upload-3').click();">
                 <img src="/img/upload.svg" id="image-section-3" />
-                <input type="file" name="productImages" class="image-upload" onchange="previewFileHandler(this, 3)" />
+                <input type="file" id="file-upload-3" name="productImages" class="image-upload" onchange="previewFileHandler(this, 3)" hidden />
               </div>
-              <div class="upload-img-box">
+              <div class="upload-img-box" onclick="document.getElementById('file-upload-4').click();">
                 <img src="/img/upload.svg" id="image-section-4" />
-                <input type="file" name="productImages" class="image-upload" onchange="previewFileHandler(this, 4)" />
+                <input type="file" id="file-upload-4" name="productImages" class="image-upload" onchange="previewFileHandler(this, 4)" hidden />
               </div>
-              <div class="upload-img-box">
+              <div class="upload-img-box" onclick="document.getElementById('file-upload-5').click();">
                 <img src="/img/upload.svg" id="image-section-5" />
-                <input type="file" name="productImages" class="image-upload" onchange="previewFileHandler(this, 5)" />
+                <input type="file" id="file-upload-5" name="productImages" class="image-upload" onchange="previewFileHandler(this, 5)" hidden />
               </div>
             </div>
           </div>
+          
         
           <input name="restaurantIid" hidden />
         
