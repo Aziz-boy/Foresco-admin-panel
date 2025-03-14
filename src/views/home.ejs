@@ -1,33 +1,51 @@
 <%- include('includes/header') %>
 
 <link rel="stylesheet" type="text/css" href="/css/home.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js"></script>
 
 <body>
   <div class="home-container">
     <!-- Modern navigation with clean styling -->
     <nav class="navigation-menu">
-      <ul class="nav justify-content-center">
+      <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link active" href="/admin">Home</a>
+          <a class="nav-link active" href="/admin"
+            ><i class="fas fa-home"></i> Home</a
+          >
         </li>
         <% if(!member) { %>
         <li class="nav-item">
-          <a class="nav-link" href="/admin/signup">Sign Up</a>
+          <a class="nav-link" href="/admin/signup"
+            ><i class="fas fa-user-plus"></i> Sign Up</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/admin/login">Login</a>
+          <a class="nav-link" href="/admin/login"
+            ><i class="fas fa-sign-in-alt"></i> Login</a
+          >
         </li>
         <% } else { %>
         <li class="nav-item">
-          <a class="nav-link" href="/admin/product/all">Menu</a>
+          <a class="nav-link" href="/admin/product/all"
+            ><i class="fas fa-utensils"></i> Menu</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/admin/user/all">Users</a>
+          <a class="nav-link" href="/admin/user/all"
+            ><i class="fas fa-users"></i> Users</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link logout-link" href="/admin/logout" 
-             onclick="return confirm('Do you want to logout?')">Logout</a>
+          <a
+            class="nav-link logout-link"
+            href="/admin/logout"
+            onclick="return confirm('Do you want to logout?')"
+            ><i class="fas fa-sign-out-alt"></i> Logout</a
+          >
         </li>
         <% } %>
       </ul>
@@ -35,11 +53,6 @@
 
     <!-- Hero section with modern animation -->
     <div class="hero-section">
-      <div class="content-wrapper">
-        <h1 class="main-title">Welcome to the Admin Portal</h1>
-        <p class="subtitle">Manage your products and users with ease</p>
-      </div>
-      
       <div class="animation-frame">
         <div class="animation-wrapper">
           <div class="sphere-animation">
@@ -52,11 +65,12 @@
                   y1="5%"
                   y2="95%"
                 >
-                  <stop stop-color="#5851DB" offset="0%" />
-                  <stop stop-color="#833AB4" offset="50%" />
-                  <stop stop-color="#C13584" offset="100%" />
+                  <stop stop-color="#4361ee" offset="0%" />
+                  <stop stop-color="#4895ef" offset="50%" />
+                  <stop stop-color="#4cc9f0" offset="100%" />
                 </linearGradient>
               </defs>
+              <!-- SVG paths from your original code -->
               <path
                 d="M361.604 361.238c-24.407 24.408-51.119 37.27-59.662 28.727-8.542-8.543 4.319-35.255 28.726-59.663 24.408-24.407 51.12-37.269 59.663-28.726 8.542 8.543-4.319 35.255-28.727 59.662z"
               />
@@ -86,6 +100,9 @@
               />
               <path
                 d="M284.707 284.34c-77.617 77.617-162.303 118.773-189.152 91.924-26.848-26.848 14.308-111.534 91.924-189.15C265.096 109.496 349.782 68.34 376.63 95.188c26.849 26.849-14.307 111.535-91.923 189.151z"
+              />
+              <path
+                d="M269.239 267.989c-78.105 78.104-163.187 119.656-190.035 92.807-26.849-26.848 14.703-111.93 92.807-190.035 78.105-78.104 163.187-119.656 190.035-92.807 26.849 26"
               />
               <path
                 d="M269.239 267.989c-78.105 78.104-163.187 119.656-190.035 92.807-26.849-26.848 14.703-111.93 92.807-190.035 78.105-78.104 163.187-119.656 190.035-92.807 26.849 26.848-14.703 111.93-92.807 190.035z"
@@ -124,43 +141,114 @@
           </div>
         </div>
       </div>
+
+      <div class="content-wrapper">
+        <h1 class="main-title">Welcome to the Admin Portal</h1>
+        <p class="subtitle">Manage your products and users with ease</p>
+
+        <% if(!member) { %>
+        <div class="cta-buttons">
+          <a href="/admin/login" class="cta-button primary-button">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+          <a href="/admin/signup" class="cta-button secondary-button">
+            <i class="fas fa-user-plus"></i> Sign Up
+          </a>
+        </div>
+        <% } else { %>
+        <div class="cta-buttons">
+          <a href="/admin/product/all" class="cta-button primary-button">
+            <i class="fas fa-utensils"></i> View Menu
+          </a>
+          <a href="/admin/user/all" class="cta-button secondary-button">
+            <i class="fas fa-users"></i> Manage Users
+          </a>
+        </div>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- Features section - new addition -->
+    <div class="features-section">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-tachometer-alt"></i>
+        </div>
+        <h3>Dashboard Overview</h3>
+        <p>
+          Get a comprehensive view of your business metrics and performance
+          indicators in one centralized location.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-utensils"></i>
+        </div>
+        <h3>Menu Management</h3>
+        <p>
+          Easily update your product offerings, prices, and availability with
+          our intuitive menu management system.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-users-cog"></i>
+        </div>
+        <h3>User Administration</h3>
+        <p>
+          Manage user accounts, permissions, and roles to ensure secure and
+          appropriate system access.
+        </p>
+      </div>
     </div>
   </div>
 
-  <script type="text/javascript" src="/js/home.js"></script>
-
   <!-- Add modern animation script -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener("DOMContentLoaded", () => {
       // Sphere animation
       const sphereAnimation = anime({
-        targets: '.sphere path',
+        targets: ".sphere path",
         strokeDashoffset: [anime.setDashoffset, 0],
-        easing: 'easeInOutSine',
+        easing: "easeInOutSine",
         duration: 2500,
-        delay: function(el, i) { return i * 100 },
-        direction: 'alternate',
-        loop: true
+        delay: function (el, i) {
+          return i * 100;
+        },
+        direction: "alternate",
+        loop: true,
       });
-      
+
       // Fade in content
       anime({
-        targets: '.content-wrapper',
+        targets: ".content-wrapper",
         opacity: [0, 1],
         translateY: [20, 0],
-        easing: 'easeOutExpo',
+        easing: "easeOutExpo",
         duration: 1200,
-        delay: 300
+        delay: 300,
       });
-      
+
       // Stagger feature cards
       anime({
-        targets: '.feature-card',
+        targets: ".feature-card",
         opacity: [0, 1],
         translateY: [40, 0],
-        easing: 'easeOutExpo',
+        easing: "easeOutExpo",
         duration: 1000,
-        delay: anime.stagger(150, {start: 600})
+        delay: anime.stagger(150, { start: 600 }),
+      });
+
+      // Pulse animation for CTA buttons
+      anime({
+        targets: ".primary-button",
+        scale: [1, 1.05],
+        easing: "easeInOutQuad",
+        duration: 1500,
+        direction: "alternate",
+        loop: true,
       });
     });
   </script>
