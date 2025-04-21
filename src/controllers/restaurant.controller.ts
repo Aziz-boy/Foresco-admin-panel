@@ -58,8 +58,9 @@ restaurantController.processSignup = async (
 
     const result = await memberService.processSignup(newMember);
     //TODO SESSIONS AUTHENTICATION
-
+    
     req.session.member = result; //browserni ichiga borib cookieni ichida seedni joylaydi va session colectionga yangi member yozadi
+    console.log("Incoming new member:", newMember);
     req.session.save(function () {
       res.redirect("/admin/product/all");
     });

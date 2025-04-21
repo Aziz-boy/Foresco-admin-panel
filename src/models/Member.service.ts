@@ -142,6 +142,7 @@ class MemberService {
       result.memberPassword = "";
       return result;
     } catch (err) {
+      console.log("Mongo Create Error:", err);
       throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
     }
   }
