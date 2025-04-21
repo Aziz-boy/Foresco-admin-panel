@@ -1,20 +1,19 @@
 {
   "compilerOptions": {
-      "target": "ES2020", //loyiha esma2020 da yozilgan module va commonjs 
-      "module": "CommonJS", // commonjs ga otkaz deyapmiz
-      "outDir": "./dist", // bu bnilan biz o'girgan typescriptdan js dagi kod boladi shu yerda 
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "baseUrl": "./",
-      "paths": { }
+    "target": "ES2020",
+    "module": "CommonJS",       // Critical for Node.js
+    "outDir": "./dist",        // Compiled JS goes here
+    "rootDir": "./src",        // Explicitly set source directory
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node", // Required for Node.js
+    "baseUrl": "./",
+    "paths": {}
   },
-  "include": ["src/**?*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*.ts"],  // Fixed glob pattern (removed erroneous "?")
+  "exclude": ["node_modules", "train2.ts"]
 }
-
-
-
 
 //bu uyerda biz aynan typescript kodlarini qanday qilib jsga compile qilishning configuratsiyasini kitishimiz kerak c kodlarini 

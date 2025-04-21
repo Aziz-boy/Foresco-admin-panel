@@ -22,7 +22,7 @@ memberController.getRestaurant = async (req: Request, res: Response) => {
   try {
     console.log("getRestaurant");
     const result = await memberService.getRestaurant();
-    
+
     res.status(HttpCode.OK).json(result);
   } catch (err) {
     console.log("Error, getRestaurant:", err);

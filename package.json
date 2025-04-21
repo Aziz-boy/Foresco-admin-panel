@@ -4,7 +4,7 @@
   "description": "This is burak project Back end",
   "main": "server.ts",
   "scripts": {
-    "start": "ts-node src/server.ts",
+    "start": "node dist/server.js",
     "start:dev": "nodemon --exec ts-node src/server.ts",
     "build": "tsc",
     "dev": "npm run start:dev",
