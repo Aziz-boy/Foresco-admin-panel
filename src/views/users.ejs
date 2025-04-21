@@ -1,72 +1,95 @@
 <%- include('includes/header') %>
 
 <link rel="stylesheet" type="text/css" href="/css/users.css" />
+<!-- Include Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
 <body>
+
   <div class="users-container">
+
     <% if(!member) { %>
-    <div class="navigation-menu">
-      <ul class="nav justify-content-center">
-        <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link active" href="/admin/">Home</a>
+    <!-- Modern navigation with clean styling -->
+    <nav class="navigation-menu">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/admin/">
+            <i class="fas fa-home icon-spacing"></i> Home
+          </a>
         </li>
-        <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/signup">SignUp</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/signup">
+            <i class="fas fa-user-plus"></i> SignUp
+          </a>
         </li>
-        <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/login">Login</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/login">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
         </li>
       </ul>
-    </div>
+    </nav>
 
-    <div class="users-frame" style="color: #dddddd">
-      <div class="board" style="font-size: 40px">Please login first!</div>
+    <div class="users-frame">
+      <div class="board empty-state">
+        <i class="fas fa-lock fa-3x"></i>
+        <div>Please login first!</div>
+      </div>
     </div>
 
     <% } else { %>
-    <div class="navigation-menu">
-      <ul class="nav justify-content-center">
-        <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link active" href="/admin/">Home</a>
+    <!-- Modern navigation with clean styling -->
+    <nav class="navigation-menu">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/admin/">
+            <i class="fas fa-home"></i> Home
+          </a>
         </li>
-        <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/product/all">Menu</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/product/all">
+            <i class="fas fa-utensils"></i> Menu
+          </a>
         </li>
-        <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/user/all">Users</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/user/all">
+            <i class="fas fa-users"></i> Users
+          </a>
         </li>
-        <li
-          class="nav-item"
-          style="cursor: pointer"
-          onclick="return confirm('Do you really want to logout?')"
-        >
-          <a class="nav-link" href="/admin/logout">Logout</a>
+        <li class="nav-item">
+          <a 
+            class="nav-link logout-link" 
+            href="/admin/logout"
+            onclick="return confirm('Do you want to logout?')"
+          >
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </a>
         </li>
       </ul>
-    </div>
+    </nav>
 
     <div class="users-frame">
       <div class="board">
         <div class="user-table">
-          <span class="header-name" style="margin-bottom: 30px"
-            >All Users List</span
-          >
-          <table class="table table-hover table-sm">
-            <thead class="thead-light">
-              <tr class="thead-light">
+          <span class="header-name">
+            <i class="fas fa-users"></i> USERS LIST
+          </span>
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
                 <th scope="col">No</th>
                 <th scope="col">Name</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Status</th>
               </tr>
             </thead>
-            <!--  LOOP PRODUCTS: START  -->
+            <!--  LOOP USERS: START  -->
               <% users.map(function(value, index) { %>
-                <tbody style="background: white">
+                <tbody>
                   <td><%= index+1 %></td>
                   <td><%= value.memberNick %></td>
                   <td><%= value.memberPhone %></td>
-                  <td style="width: 13%">
+                  <td>
                     <select class="spec-select member-status" id="<%= value._id %>">
                       <option value="ACTIVE" <%= value.memberStatus === 'ACTIVE' ? 'selected' : '' %> >ACTIVE</option>
                       <option value="BLOCK" <%= value.memberStatus === 'BLOCK' ? 'selected' : '' %> >BLOCK</option>
@@ -75,8 +98,9 @@
                   </td>
                 </tbody>
               <%  }) %>
-            <!--  LOOP PRODUCTS: END  -->
+            <!--  LOOP USERS: END  -->
           </table>
+          <!-- Pagination will be inserted here by JavaScript -->
         </div>
       </div>
     </div>
@@ -84,6 +108,204 @@
   </div>
 
   <script type="text/javascript" src="/js/users.js"></script>
+  
+  <!-- Add the pagination JavaScript code -->
+  <% if(member) { %>
+  <script>
+    // Pagination configuration
+    const ITEMS_PER_PAGE = 10; // Number of users per page
+    let currentPage = 1;
+    let totalPages = 1;
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all user rows and calculate total pages
+      const userRows = document.querySelectorAll('.table tbody');
+      totalPages = Math.ceil(userRows.length / ITEMS_PER_PAGE);
+      
+      // Create pagination controls
+      createPaginationControls();
+      
+      // Show the first page by default
+      showPage(currentPage);
+      
+      // Set up status change handlers
+      document.querySelectorAll('.member-status').forEach(select => {
+        select.addEventListener('change', function() {
+          const userId = this.id;
+          const newStatus = this.value;
+          
+          // Save current page
+          localStorage.setItem('currentUserPage', currentPage);
+          
+          // Here you would normally have AJAX to update the status
+          console.log(`Updating user ${userId} status to ${newStatus}`);
+          // Example AJAX call (commented out):
+          /*
+          fetch('/admin/user/update-status', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              userId: userId,
+              memberStatus: newStatus
+            })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              console.log('Status updated successfully');
+            } else {
+              console.error('Failed to update status');
+            }
+          });
+          */
+        });
+      });
+    });
+
+    // Function to create pagination controls
+    function createPaginationControls() {
+      // Create pagination container
+      const paginationContainer = document.createElement('div');
+      paginationContainer.className = 'pagination-container';
+      
+      // Create previous button
+      const prevButton = document.createElement('button');
+      prevButton.className = 'btn pagination-btn';
+      prevButton.innerHTML = '<i class="fas fa-chevron-left"></i> Previous';
+      prevButton.addEventListener('click', function() {
+        if (currentPage > 1) {
+          showPage(currentPage - 1);
+        }
+      });
+      
+      // Create page number buttons container
+      const pageNumbersContainer = document.createElement('div');
+      pageNumbersContainer.className = 'page-numbers';
+      pageNumbersContainer.style.display = 'flex';
+      
+      // Create page number buttons
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.className = 'page-btn';
+        pageButton.innerHTML = i;
+        pageButton.dataset.page = i;
+        pageButton.addEventListener('click', function() {
+          showPage(parseInt(this.dataset.page));
+        });
+        pageNumbersContainer.appendChild(pageButton);
+      }
+      
+      // Create next button
+      const nextButton = document.createElement('button');
+      nextButton.className = 'btn pagination-btn';
+      nextButton.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';
+      nextButton.addEventListener('click', function() {
+        if (currentPage < totalPages) {
+          showPage(currentPage + 1);
+        }
+      });
+      
+      // Add all elements to pagination container
+      paginationContainer.appendChild(prevButton);
+      paginationContainer.appendChild(pageNumbersContainer);
+      paginationContainer.appendChild(nextButton);
+      
+      // Add pagination container after the table
+      const table = document.querySelector('.table');
+      table.parentNode.insertBefore(paginationContainer, table.nextSibling);
+    }
+
+    // Function to show a specific page
+    function showPage(pageNumber) {
+      // Update current page
+      currentPage = pageNumber;
+      
+      // Get all user rows
+      const userRows = document.querySelectorAll('.table tbody');
+      
+      // Hide all rows
+      userRows.forEach(row => {
+        row.style.display = 'none';
+      });
+      
+      // Calculate start and end index for current page
+      const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+      const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, userRows.length);
+      
+      // Show rows for current page
+      for (let i = startIndex; i < endIndex; i++) {
+        userRows[i].style.display = 'table-row-group';
+      }
+      
+      // Update active state of page buttons
+      const pageButtons = document.querySelectorAll('.page-btn');
+      pageButtons.forEach(button => {
+        if (parseInt(button.dataset.page) === currentPage) {
+          button.classList.add('btn-primary');
+        } else {
+          button.classList.remove('btn-primary');
+        }
+      });
+      
+      // Update state of prev/next buttons
+      const prevButton = document.querySelector('.pagination-btn:first-child');
+      const nextButton = document.querySelector('.pagination-btn:last-child');
+      
+      prevButton.disabled = currentPage === 1;
+      nextButton.disabled = currentPage === totalPages;
+    }
+
+    // Restore pagination state after page reload
+    window.onload = function() {
+      const savedPage = localStorage.getItem('currentUserPage');
+      if (savedPage) {
+        currentPage = parseInt(savedPage);
+        localStorage.removeItem('currentUserPage');
+        
+        // Need to wait for DOM to be ready before applying saved page
+        setTimeout(() => {
+          if (typeof showPage === 'function') {
+            showPage(currentPage);
+          }
+        }, 100);
+      }
+    };
+  </script>
+  <% } %>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get the current path
+      const currentLocation = window.location.pathname;
+  
+      // Select all nav links
+      const navLinks = document.querySelectorAll(".nav-link");
+  
+      let matched = false;
+  
+      // Loop through links and check for exact match first
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === currentLocation) {
+          link.classList.add("active");
+          matched = true; // Mark that we found an exact match
+        } else {
+          link.classList.remove("active");
+        }
+      });
+  
+      // If no exact match, check for parent sections
+      if (!matched) {
+        navLinks.forEach((link) => {
+          if (currentLocation.startsWith(link.getAttribute("href")) && link.getAttribute("href") !== "/admin/") {
+            link.classList.add("active");
+          }
+        });
+      }
+    });
+  </script>
+  
 </body>
 
 <%- include('includes/footer') %>

@@ -1,51 +1,62 @@
 <%- include('includes/header') %>
 
 <link rel="stylesheet" type="text/css" href="/css/products.css" />
+<!-- Include Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
 <body>
   <div class="products-container">
-    <div class="navigation-menu">
-      <ul class="nav justify-content-center">
-        <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link active" href="/admin/">Home</a>
+    <!-- Modern navigation with clean styling -->
+    <nav class="navigation-menu">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/admin/">
+            <i class="fas fa-home"></i> Home
+          </a>
         </li>
-        <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/product/all">Menu</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/product/all">
+            <i class="fas fa-university"></i> Services
+          </a>
         </li>
-        <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/user/all">Users</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/user/all">
+            <i class="fas fa-users"></i> Users
+          </a>
         </li>
-        <li
-          class="nav-item"
-          style="cursor: pointer"
-          onclick="return confirm('Do you want to logout?')"
-        >
-          <a class="nav-link" href="/admin/logout">Logout</a>
+        <li class="nav-item">
+          <a 
+            class="nav-link logout-link" 
+            href="/admin/logout"
+            onclick="return confirm('Do you want to logout?')"
+          >
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </a>
         </li>
       </ul>
-    </div>
+    </nav>
 
     <div class="restaurant-menu-frame">
       <div class="board">
         <div class="dishes-table">
-          <span class="new-dish-txt" style="margin-bottom: 30px">
-            RESTAURANT MENU
+          <span class="new-dish-txt">
+            SERVICES MENU
           </span>
           <table class="table table-bordered table-hover">
-            <thead class="thead-light">
-              <tr class="thead-light">
+            <thead>
+              <tr>
                 <th scope="col">T/r</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Product Type</th>
-                <th scope="col">Product Volume</th>
-                <th scope="col">Product Price</th>
-                <th scope="col">Product Left Count</th>
+                <th scope="col">Service Name</th>
+                <th scope="col">Service Type</th>
+                <th scope="col">Service Volume</th>
+                <th scope="col">Service Price</th>
+                <th scope="col">Service Left Count</th>
                 <th scope="col">Status</th>
               </tr>
             </thead>
             <!--  LOOP PRODUCTS: START  -->
               <% products.map(function(value, key){ %>
-                <tbody style="background: white">
+                <tbody>
                   <td><%= key + 1 %></td>
                   <td><%= value.productName %></td> 
                   <td><%= value.productCollection %></td>
@@ -63,171 +74,404 @@
               <%}) %>
             <!--  LOOP PRODUCTS: END  -->
           </table>
-          <div
-            class="long-input"
-            style="align-items: flex-end; margin-bottom: 25px"
-          >
+          <!-- Pagination will be inserted here by JavaScript -->
+          
+          <div class="long-input" style="align-items: flex-end; margin-bottom: 25px">
             <button class="btn btn-primary" id="process-btn">
-              New Product
+              <i class="fas fa-plus"></i> New Service
             </button>
           </div>
         </div>
 
-        <form
-          onsubmit="return validateForm()"
-          action="/admin/product/create"
-          method="POST"
-          class="dish-container"
-          enctype="multipart/form-data"
-        >
-          <div class="long-input" style="display: flex; align-items: center">
-            <span class="new-dish-txt">NEW PRODUCT DETAIL</span>
+        <form onsubmit="return validateForm()" action="/admin/product/create" method="POST" class="dish-container" enctype="multipart/form-data">
+  
+          <h2 class="new-dish-txt">NEW SERVICE DETAIL</h2>
+        
+          <!-- Product Name -->
+          <div class="input-group">
+            <label>Service Name</label>
+            <input type="text" name="productName" placeholder="Enter product name" required />
+          </div> 
+        
+          <input name="productStatus" value="PAUSE" hidden />
+        
+          <!-- Product Price -->
+          <div class="input-group">
+            <label>Service Price</label>
+            <input type="number" name="productPrice" placeholder="Enter price" required />
           </div>
-          <div class="login-input-frame">
-            <div class="long-input">
-              <label>Product Name</label>
-              <input
-                type="text"
-                placeholder="Name"
-                name="productName"
-                class="product-name"
-              />
-            </div>
-            <input
-              name="productStatus"
-              value="PAUSE"
-              class="product-status"
-              hidden
-            />
+        
+          <!-- Product Left Count -->
+          <div class="input-group">
+            <label>Service Left Counts</label>
+            <input type="number" name="productLeftCount" placeholder="Enter quantity available" required />
           </div>
-          <div class="half-input-frame">
-            <div class="half-input">
-              <label>Product Price</label>
-              <input
-                type="number"
-                placeholder="Price"
-                name="productPrice"
-                class="product-price"
-              />
-            </div>
-            <div class="half-input">
-              <label>Product Left Counts</label>
-              <input
-                type="number"
-                placeholder="Counts"
-                name="productLeftCount"
-                class="product-left-count"
-              />
-            </div>
+        
+          <!-- Product Type -->
+          <div class="input-group">
+            <label>Service Type</label>
+            <select name="productCollection" onchange="toggleVolumeFields()">
+              <option value="DISH" selected>Dish</option>
+              <option value="SALAD">Salad</option>
+              <option value="DESSERT">Dessert</option>
+              <option value="DRINK">Drink</option>
+              <option value="OTHER">Other</option>
+            </select>
           </div>
-          <div class="half-input-frame">
-            <div class="half-input">
-              <label>Product Type</label>
-              <select class="product-collection" name="productCollection">
-                <option value="DISH" selected>Dish</option>
-                <option value="SALAD">Salad</option>
-                <option value="DESSERT">Dessert</option>
-                <option value="DRINK">Drink</option>
-                <option value="OTHER">Other</option>
-              </select>
-            </div>
-
-            <div class="half-input" id="product-collection">
-              <label>Dish Volume</label>
-              <select class="product-size" name="productSize">
-                <option value="SMALL">Small</option>
-                <option value="NORMAL" selected>Normal</option>
-                <option value="LARGE">Large</option>
-                <option value="SET">Set</option>
-              </select>
-            </div>
-
-            <div class="half-input" id="product-volume" style="display: none">
-              <label>Drink Volume</label>
-              <select class="product-volume" name="productVolume">
-                <option value="0.5">0,5 liters</option>
-                <option value="1" selected>1 liters</option>
-                <option value="1.2">1,2 liters</option>
-                <option value="1.5">1,5 liters</option>
-                <option value="2">2 liters</option>
-              </select>
-            </div>
+        
+          <!-- Product Size -->
+          <div class="input-group">
+            <label>Size/Volume</label>
+            <select name="productSize">
+              <option value="SMALL">Small</option>
+              <option value="NORMAL" selected>Normal</option>
+              <option value="LARGE">Large</option>
+              <option value="SET">Set</option>
+            </select>
           </div>
-          <div class="long-input">
-            <label>Product Description</label>
-            <textarea name="productDesc" class="product-desc"></textarea>
+        
+          <!-- Drink Volume (Hidden Initially) -->
+          <div class="input-group hidden" id="drink-volume">
+            <label>Drink Volume</label>
+            <select name="productVolume">
+              <option value="0.5">0.5 liters</option>
+              <option value="1" selected>1 liter</option>
+              <option value="1.2">1.2 liters</option>
+              <option value="1.5">1.5 liters</option>
+              <option value="2">2 liters</option>
+            </select>
           </div>
-
-          <div class="img-frame">
-            <label>Product Images</label>
+        
+          <!-- Product Description -->
+          <div class="input-group">
+            <label>Service Description</label>
+            <textarea name="productDesc" placeholder="Enter product description"></textarea>
+          </div>
+        
+          <!-- Product Images -->
+          <div class="img-upload-container">
+            <label>Service Images</label>
             <div class="media-frame">
-              <div class="upload-img-box">
-                <img src="/img/upload.svg" class="1" id="image-section-1" />
-                <input
-                  type="file"
-                  id="file"
-                  name="productImages"
-                  class="image-one"
-                  required
-                  onchange="previewFileHandler(this, 1)"
-                />
+              <!-- Image Upload Inputs -->
+              <div class="upload-img-box" onclick="document.getElementById('file-upload-1').click();">
+                <img src="/img/upload.svg" id="image-section-1" />
+                <input type="file" id="file-upload-1" name="productImages" class="image-upload" required onchange="previewFileHandler(this, 1)" hidden />
               </div>
-              <div class="upload-img-box">
-                <img src="/img/upload.svg" class="2" id="image-section-2" />
-                <input
-                  type="file"
-                  id="file"
-                  name="productImages"
-                  class="image-two"
-                  onchange="previewFileHandler(this, 2)"
-                />
+              <div class="upload-img-box" onclick="document.getElementById('file-upload-2').click();">
+                <img src="/img/upload.svg" id="image-section-2" />
+                <input type="file" id="file-upload-2" name="productImages" class="image-upload" onchange="previewFileHandler(this, 2)" hidden />
               </div>
-              <div class="upload-img-box">
-                <img src="/img/upload.svg" class="3" id="image-section-3" />
-                <input
-                  type="file"
-                  id="file"
-                  name="productImages"
-                  class="image-three"
-                  onchange="previewFileHandler(this, 3)"
-                />
+              <div class="upload-img-box" onclick="document.getElementById('file-upload-3').click();">
+                <img src="/img/upload.svg" id="image-section-3" />
+                <input type="file" id="file-upload-3" name="productImages" class="image-upload" onchange="previewFileHandler(this, 3)" hidden />
               </div>
-              <div class="upload-img-box">
-                <img src="/img/upload.svg" class="4" id="image-section-4" />
-                <input
-                  type="file"
-                  id="file"
-                  name="productImages"
-                  class="image-four"
-                  onchange="previewFileHandler(this, 4)"
-                />
+              <div class="upload-img-box" onclick="document.getElementById('file-upload-4').click();">
+                <img src="/img/upload.svg" id="image-section-4" />
+                <input type="file" id="file-upload-4" name="productImages" class="image-upload" onchange="previewFileHandler(this, 4)" hidden />
               </div>
-              <div class="upload-img-box">
-                <img src="/img/upload.svg" class="5" id="image-section-5" />
-                <input
-                  type="file"
-                  id="file"
-                  name="productImages"
-                  class="image-five"
-                  onchange="previewFileHandler(this, 5)"
-                />
+              <div class="upload-img-box" onclick="document.getElementById('file-upload-5').click();">
+                <img src="/img/upload.svg" id="image-section-5" />
+                <input type="file" id="file-upload-5" name="productImages" class="image-upload" onchange="previewFileHandler(this, 5)" hidden />
               </div>
-              <input name="restaurantIid" class="restaurant-id" hidden />
             </div>
           </div>
-
+          
+        
+          <input name="restaurantIid" hidden />
+        
+          <!-- Buttons -->
           <div class="operation-buttons">
-            <button class="btn btn-danger" id="cancel-btn">Cancel</button>
-            <button type="submit" class="btn btn-primary" id="create-btn">
-              Create
+            <button type="button" class="btn btn-danger" id="cancel-btn">
+              <i class="fas fa-times"></i> Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-check"></i> Create
             </button>
           </div>
+        
         </form>
+        
+        
+        
       </div>
     </div>
   </div>
 
-  <script type="text/javascript" src="/js/products.js"></script>
+  
+  <!-- Pagination JavaScript -->
+  <script>
+    // Pagination configuration
+    const ITEMS_PER_PAGE = 10; // Number of products per page
+    let currentPage = 1;
+    let totalPages = 1;
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all product rows and calculate total pages
+      const productRows = document.querySelectorAll('.table tbody');
+      totalPages = Math.ceil(productRows.length / ITEMS_PER_PAGE);
+      
+      // Create pagination controls
+      createPaginationControls();
+      
+      // Show the first page by default
+      showPage(currentPage);
+      
+      // Set up product type change handler
+      const productCollection = document.querySelector('.product-collection');
+      if (productCollection) {
+        productCollection.addEventListener('change', function() {
+          const productCollectionDiv = document.getElementById('product-collection');
+          const productVolumeDiv = document.getElementById('product-volume');
+          
+          if (this.value === 'DRINK') {
+            productCollectionDiv.style.display = 'none';
+            productVolumeDiv.style.display = 'flex';
+          } else {
+            productCollectionDiv.style.display = 'flex';
+            productVolumeDiv.style.display = 'none';
+          }
+        });
+      }
+      
+      // Set up status change handlers
+      document.querySelectorAll('.new-product-status').forEach(select => {
+        select.addEventListener('change', function() {
+          const productId = this.id;
+          const newStatus = this.value;
+          
+          // Here you would normally have AJAX to update the status
+          console.log(`Updating product ${productId} status to ${newStatus}`);
+          // Example AJAX call (commented out):
+          /*
+          fetch('/admin/product/update-status', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              productId: productId,
+              productStatus: newStatus
+            })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              console.log('Status updated successfully');
+            } else {
+              console.error('Failed to update status');
+            }
+          });
+          */
+        });
+      });
+    });
+
+    // Function to create pagination controls
+    function createPaginationControls() {
+      // Create pagination container
+      const paginationContainer = document.createElement('div');
+      paginationContainer.className = 'pagination-container';
+      
+      // Create previous button
+      const prevButton = document.createElement('button');
+      prevButton.className = 'btn pagination-btn';
+      prevButton.innerHTML = '<i class="fas fa-chevron-left"></i> Previous';
+      prevButton.addEventListener('click', function() {
+        if (currentPage > 1) {
+          showPage(currentPage - 1);
+        }
+      });
+      
+      // Create page number buttons container
+      const pageNumbersContainer = document.createElement('div');
+      pageNumbersContainer.className = 'page-numbers';
+      pageNumbersContainer.style.display = 'flex';
+      
+      // Create page number buttons
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.className = 'page-btn';
+        pageButton.innerHTML = i;
+        pageButton.dataset.page = i;
+        pageButton.addEventListener('click', function() {
+          showPage(parseInt(this.dataset.page));
+        });
+        pageNumbersContainer.appendChild(pageButton);
+      }
+      
+      // Create next button
+      const nextButton = document.createElement('button');
+      nextButton.className = 'btn pagination-btn';
+      nextButton.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';
+      nextButton.addEventListener('click', function() {
+        if (currentPage < totalPages) {
+          showPage(currentPage + 1);
+        }
+      });
+      
+      // Add all elements to pagination container
+      paginationContainer.appendChild(prevButton);
+      paginationContainer.appendChild(pageNumbersContainer);
+      paginationContainer.appendChild(nextButton);
+      
+      // Add pagination container after the table
+      const table = document.querySelector('.table');
+      table.parentNode.insertBefore(paginationContainer, table.nextSibling);
+    }
+
+    // Function to show a specific page
+    function showPage(pageNumber) {
+      // Update current page
+      currentPage = pageNumber;
+      
+      // Get all product rows
+      const productRows = document.querySelectorAll('.table tbody');
+      
+      // Hide all rows
+      productRows.forEach(row => {
+        row.style.display = 'none';
+      });
+      
+      // Calculate start and end index for current page
+      const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+      const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, productRows.length);
+      
+      // Show rows for current page
+      for (let i = startIndex; i < endIndex; i++) {
+        productRows[i].style.display = 'table-row-group';
+      }
+      
+      // Update active state of page buttons
+      const pageButtons = document.querySelectorAll('.page-btn');
+      pageButtons.forEach(button => {
+        if (parseInt(button.dataset.page) === currentPage) {
+          button.classList.add('btn-primary');
+        } else {
+          button.classList.remove('btn-primary');
+        }
+      });
+      
+      // Update state of prev/next buttons
+      const prevButton = document.querySelector('.pagination-btn:first-child');
+      const nextButton = document.querySelector('.pagination-btn:last-child');
+      
+      prevButton.disabled = currentPage === 1;
+      nextButton.disabled = currentPage === totalPages;
+    }
+
+    // Function to preview uploaded images
+    function previewFileHandler(input, num) {
+      const file = input.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById(`image-section-${num}`).src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // Function to validate the form before submission
+    function validateForm() {
+      const productName = document.querySelector('.product-name').value;
+      const productPrice = document.querySelector('.product-price').value;
+      const productLeftCount = document.querySelector('.product-left-count').value;
+      
+      if (!productName) {
+        alert('Please enter a product name');
+        return false;
+      }
+      
+      if (!productPrice || productPrice <= 0) {
+        alert('Please enter a valid product price');
+        return false;
+      }
+      
+      if (!productLeftCount || productLeftCount < 0) {
+        alert('Please enter a valid quantity');
+        return false;
+      }
+      
+      return true;
+    }
+
+// Toggle form visibility
+document.addEventListener('DOMContentLoaded', function() {
+  const processBtnEl = document.getElementById('process-btn');
+  const cancelBtnEl = document.getElementById('cancel-btn');
+  const dishContainerEl = document.querySelector('.dish-container');
+  
+  // Hide the form initially
+  dishContainerEl.style.display = 'none';
+  
+  processBtnEl.addEventListener('click', function(e) {
+    e.preventDefault(); // Prevent any default behavior
+    // Store the current page before showing form
+    localStorage.setItem('currentProductPage', currentPage);
+    dishContainerEl.style.display = 'flex';
+  });
+  
+  cancelBtnEl.addEventListener('click', function(e) {
+    e.preventDefault();
+    dishContainerEl.style.display = 'none';
+    
+    // Reset form fields
+    document.querySelector('.product-name').value = '';
+    document.querySelector('.product-price').value = '';
+    document.querySelector('.product-left-count').value = '';
+    document.querySelector('.product-desc').value = '';
+    
+    // Reset image previews
+    for (let i = 1; i <= 5; i++) {
+      document.getElementById(`image-section-${i}`).src = '/img/upload.svg';
+    }
+  });
+  
+  // Add proper form submission handling
+  const productForm = document.querySelector('.dish-container');
+  productForm.addEventListener('submit', function(e) {
+    if (!validateForm()) {
+      e.preventDefault();
+    }
+  });
+});
+
+    // Restore pagination state after page load
+    window.onload = function() {
+      const savedPage = localStorage.getItem('currentProductPage');
+      if (savedPage) {
+        currentPage = parseInt(savedPage);
+        localStorage.removeItem('currentProductPage');
+        
+        // Need to wait for DOM to be ready before applying saved page
+        setTimeout(() => {
+          if (typeof showPage === 'function') {
+            showPage(currentPage);
+          }
+        }, 100);
+      }
+    };
+
+
+  </script>
+
+<script>
+  // Get current page URL
+  const currentLocation = window.location.pathname;
+
+  // Select all nav links
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  // Loop through links and set active class
+  navLinks.forEach((link) => {
+    if (link.getAttribute("href") === currentLocation) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+</script>
+
 </body>
 
 <%- include('includes/footer') %>
